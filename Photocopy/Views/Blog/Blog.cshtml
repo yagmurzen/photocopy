@@ -1,0 +1,32 @@
+﻿@model IList<Photocopy.Entities.Dto.WebUI.BlogListDto>
+
+@{
+    ViewData["Title"] = "Word to PDF - Word dosyasını PDF yapma";
+}
+
+@section customStyle {
+    <link rel="stylesheet" href="../css/blog.css" />
+}
+<main>
+    <div class="container">
+        <!-- BREADCRUMB -->
+        <p class="breadcrumb"><a href="/">Anasayfa</a> > Blog</p>
+        <section id="post-grid">
+            @foreach (var item in Model)
+            {
+                <a href="/blog/@item.Slug">
+                    <article>
+                        <img id="cover-image" src="data:image /png;base64,@(item.ThumbImagePath)" alt="post" loading="lazy" />
+
+                        <div>
+                            <h2>@item.PageTitle</h2>
+                            <p>
+                                @item.Description
+                            </p>
+                        </div>
+                    </article>
+                </a>
+            }
+        </section>
+    </div>
+</main>

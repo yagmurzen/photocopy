@@ -1,0 +1,17 @@
+﻿@model Photocopy.Entities.Dto.OrderStateDto
+<div class="form-group">
+    <label class="bmd-label-floating">Sipariş Durumu</label>
+    <select class="form-select custom-select" aria-label="Default select example" name="OrderStateId" value="@Model.Value">
+        @foreach (var item in Model.Items)
+        {
+            if (item.Value == @Model.Value)
+            {
+                <option selected value="@item.Value">@item.Text</option>
+            }
+            else
+            {
+                <option value="@item.Value">@item.Text</option>
+            }
+        }
+    </select>
+</div>

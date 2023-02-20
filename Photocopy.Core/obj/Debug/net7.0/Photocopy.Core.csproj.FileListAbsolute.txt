@@ -1,0 +1,17 @@
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Core\bin\Debug\net7.0\Photocopy.Core.deps.json
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Core\bin\Debug\net7.0\Photocopy.Core.runtimeconfig.json
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Core\bin\Debug\net7.0\Photocopy.Core.dll
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Core\bin\Debug\net7.0\Photocopy.Core.pdb
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Core\bin\Debug\net7.0\Photocopy.Entities.dll
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Core\bin\Debug\net7.0\Photocopy.Entities.pdb
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Core\obj\Debug\net7.0\Photocopy.Core.csproj.AssemblyReference.cache
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Core\obj\Debug\net7.0\Photocopy.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Core\obj\Debug\net7.0\Photocopy.Core.AssemblyInfoInputs.cache
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Core\obj\Debug\net7.0\Photocopy.Core.AssemblyInfo.cs
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Core\obj\Debug\net7.0\Photocopy.Core.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Core\obj\Debug\net7.0\Photocopy.Core.csproj.CopyComplete
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Core\obj\Debug\net7.0\Photocopy.Core.dll
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Core\obj\Debug\net7.0\refint\Photocopy.Core.dll
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Core\obj\Debug\net7.0\Photocopy.Core.pdb
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Core\obj\Debug\net7.0\Photocopy.Core.genruntimeconfig.cache
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Core\obj\Debug\net7.0\ref\Photocopy.Core.dll

@@ -1,0 +1,17 @@
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.DataAccess\bin\Debug\net7.0\Photocopy.DataAccess.deps.json
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.DataAccess\bin\Debug\net7.0\Photocopy.DataAccess.dll
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.DataAccess\bin\Debug\net7.0\Photocopy.DataAccess.pdb
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.DataAccess\bin\Debug\net7.0\Photocopy.Core.dll
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.DataAccess\bin\Debug\net7.0\Photocopy.Entities.dll
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.DataAccess\bin\Debug\net7.0\Photocopy.Core.pdb
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.DataAccess\bin\Debug\net7.0\Photocopy.Entities.pdb
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.DataAccess\obj\Debug\net7.0\Photocopy.DataAccess.csproj.AssemblyReference.cache
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.DataAccess\obj\Debug\net7.0\Photocopy.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.DataAccess\obj\Debug\net7.0\Photocopy.DataAccess.AssemblyInfoInputs.cache
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.DataAccess\obj\Debug\net7.0\Photocopy.DataAccess.AssemblyInfo.cs
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.DataAccess\obj\Debug\net7.0\Photocopy.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.DataAccess\obj\Debug\net7.0\Photocopy.DataAccess.csproj.CopyComplete
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.DataAccess\obj\Debug\net7.0\Photocopy.DataAccess.dll
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.DataAccess\obj\Debug\net7.0\refint\Photocopy.DataAccess.dll
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.DataAccess\obj\Debug\net7.0\Photocopy.DataAccess.pdb
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.DataAccess\obj\Debug\net7.0\ref\Photocopy.DataAccess.dll

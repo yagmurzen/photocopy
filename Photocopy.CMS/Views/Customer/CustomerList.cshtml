@@ -1,0 +1,110 @@
+﻿@model IList<Photocopy.Entities.Dto.CustomerListDto>
+
+@{
+    ViewData["Title"] = "Müşteri Listesi";
+    Layout = "_Layout";
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-special">
+                        <form method="post">
+                            <span class="card-title ">Müşteri Listesi</span>
+
+                        </form>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-info">
+                                <th>
+                                    Müşteri Id
+                                </th>
+                                <th>
+                                    Müşteri Adı
+                                </th>
+                                <th>
+                                    Müşteri Telefon
+                                </th>
+                                <th>
+                                    Müşteri Email
+                                </th>
+                                <th class="td-actions text-right">
+                                    İşlemler
+                                </th>
+
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.Id</td>
+                                            <td>@item.Name @item.LastName</td>
+                                            <td>@item.PhoneNumber</td>
+                                            <td>@item.Email</td>
+                                            <td class="td-actions text-right">
+                                                <form method="post" action="/Customer?customerId=@item.Id">
+                                                    <button type="submit" rel="tooltip" title="Edit Task" class="btn btn-info btn-link btn-sm">
+                                                        <i class="material-icons">edit</i>
+                                                    </button>
+                                                </form>
+                                                <form>
+                                                    <button  rel="tooltip" title="Remove" class="btn btn-warning btn-link btn-sm delete" data-customerId="@item.Id">
+                                                        <i class="material-icons">delete</i>
+                                                    </button>
+                                                </form>
+
+                                            </td>
+                                        </tr>
+                                    }
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Delete data-bs-toggle="modal" data-bs-target="#deleteModal"-->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/Customer/DeleteCustomer" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sil</h5>
+                    <input type="hidden" id="customerId" name="customerId" value="" />
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Silmek İstediğinize Emin misiniz?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeç</button>
+                    <button type="submit" class="btn btn-primary">Sil</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts
+    {
+    <script>
+        $('form .delete').click(function (e) {
+            e.preventDefault();
+
+            $("#customerId").val($(this).attr("data-customerId"));
+
+
+            $('#deleteModal').modal({
+                show: true
+            });
+        });
+    </script>
+}

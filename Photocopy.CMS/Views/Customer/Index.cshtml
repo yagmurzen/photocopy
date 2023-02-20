@@ -1,0 +1,154 @@
+﻿@model Photocopy.Entities.Dto.CustomerDto
+@{
+    ViewData["Title"] = "Müşteri Bilgileri";
+    Layout = "_Layout";
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title">Müşteri @(Model.Id != null ? "Güncelle" : "Ekle")</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="/Customer/Customer" autocomplete="off">
+                            <input type="hidden" name="Id" value="@Model.Id" />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Müşteri Adı</label>
+                                        <input type="text" class="form-control" name="Name" value="@Model.Name" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Müşteri Soyad</label>
+                                        <input type="text" class="form-control" name="LastName" value="@Model.LastName" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Telefon</label>
+                                        <input type="tel" class="form-control" name="PhoneNumber" value="@Model.PhoneNumber" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Email Adres</label>
+                                        <input type="email" class="form-control" value="@Model.Email" name="Email" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-info pull-right">@(Model.Id != null ? "Güncelle" : "Ekle")</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        @if (Model.CustomerAdres != null)
+        {
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-special">
+                            <span class="card-title ">Müşteri Adresleri</span>
+
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class=" text-info">
+                                    <th>
+                                        İl
+                                    </th>
+                                    <th>
+                                        İlçe
+                                    </th>
+                                    <th>
+                                        Adres
+                                    </th>
+                                    <th class="td-actions text-right">
+                                        İşlemler
+                                    </th>
+
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.CustomerAdres)
+                                        {
+                                            <tr>
+                                                <td>@item.CityCode</td>
+                                                <td>@item.DistrictCode</td>
+                                                <td>@item.Address</td>
+
+                                                <td class="td-actions text-right">
+
+                                                    <form method="post">
+                                                        <button type="button" rel="tooltip" title="Adres sil" class="delete btn btn-warning btn-link btn-sm" data-addressId="@item.Id" data-customerId="@Model.Id">
+                                                            <i class="material-icons">delete</i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+<!-- Modal Delete data-bs-toggle="modal" data-bs-target="#deleteModal"-->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/Customer/DeleteCustomerAddress" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sil</h5>
+                    <input type="hidden" id="addressId" name="addressId" value="" />
+                    <input type="hidden" id="customerId" name="customerId" value="" />
+
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Silmek İstediğinize Emin misiniz?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeç</button>
+                    <button type="submit" class="btn btn-primary">Sil</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts
+    {
+    <script>
+        $('form .delete').click(function (e) {
+            e.preventDefault();
+
+            $("#addressId").val($(this).attr("data-addressId"));
+            $("#customerId").val($(this).attr("data-customerId"));
+
+
+
+            $('#deleteModal').modal({
+                show: true
+            });
+        });
+    </script>
+}

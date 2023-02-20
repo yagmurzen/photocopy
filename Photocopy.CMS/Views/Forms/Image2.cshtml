@@ -1,0 +1,26 @@
+﻿@model WebUI.Model.ImageDto
+<div id="@(Model.Id + "-tab")" class="form-group @Model.CssClass">
+    <label class="col-lg-3 control-label">@Model.Label (@(Model.Width)x@(Model.Height))</label>
+    <input type="hidden"  id="@Model.Id" name="@Model.Name" value="@Model.Value" class="@Model.CssClass @(Model.IsRequired ? "" : "notRequire")"/>
+    <div class="col-lg-9 media">
+        <div id="@(Model.Id + "ii")" class="bg-light pull-left text-center media-large thumb-large">
+         
+            @if(string.IsNullOrEmpty(Model.Value))
+            {
+                <img id="@(Model.Id + "Path")" src="/Assets/Cms/images/placeholder.png" class="" style="max-height: 200px; max-width: 90px;" />
+            }
+            else
+            {
+                <img id="@(Model.Id + "Path")" src="@Model.Value" class="" style="max-height: 200px; max-width: 90px;" />
+            }
+        </div>
+        
+        <div class="media-body">
+            <button class="remove-btn btn btn-sm btn-default" data-id="@Model.Id">Kaldır</button>
+            <button class="select-image-start-btn btn btn-sm btn-default" data-height="@Model.Height" data-width="@Model.Width" data-id="@Model.Id" data-id="@Model.Id">Seç</button>
+        </div>
+       
+   
+    </div>
+</div>
+

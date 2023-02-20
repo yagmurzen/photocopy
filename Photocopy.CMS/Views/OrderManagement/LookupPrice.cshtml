@@ -1,0 +1,87 @@
+﻿@model IList<Photocopy.Entities.Dto.LookupPriceListDto>
+@{
+    ViewData["Title"] = "Fiyat Güncelle";
+    Layout = "_Layout";
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-special">
+                        <span class="card-title ">Fiyat Listesi</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-info">
+                                <th>
+                                    ID
+                                </th>
+                                <th>
+                                    Tür
+                                </th>
+                                <th>
+                                    Açıklama
+                                </th>
+                                <th>
+                                    Fiyat
+                                </th>
+                                <th>
+                                    Renk
+                                </th>
+                                <th>
+                                    Kalite
+                                </th>
+                                <th class="td-actions text-right">
+                                    Güncelle
+                                </th>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr class="row-@item.Id">
+                                            <td>@item.Id</td>
+                                            <td>@item.Tag</td>
+                                            <td>@item.Text</td>
+                                            <td><input type="text" value="@item.DefaultValue" class="value" /> TL</td>
+                                            <td>@(item.IsColourful == 0 ? "Siyah Beyaz" : "Renkli")</td>
+                                            <td>@(item.IsQuality == 0 ? "Standart" : "Kaliteli")</td>
+                                            <td class="td-actions text-right">
+                                                <form>
+                                                    <button type="button" rel="tooltip" data-id="@item.Id" title="Fiyat Güncelle" class="btn btn-info btn-link btn-sm btn-update">
+                                                        <i class="material-icons">edit</i>
+                                                    </button>
+                                                </form>
+
+                                            </td>
+                                        </tr>
+                                    }
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts
+    {
+    <script>
+        $('form .btn-update').click(function (e) {
+            e.preventDefault();
+            var id = $(this).attr("data-id");
+            var value = $(".row-" + id + " input.value").val();
+            $.ajax({
+                type: "Post",
+                url: "/OrderManagement/SetLookupPrice",
+                data: { id: id, defaultValue: value },
+                success: function (data) {
+                  //success message
+                }
+            });
+        });
+    </script>
+}

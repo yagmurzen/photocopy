@@ -1,0 +1,44 @@
+﻿@section customStyle {
+    <link rel="stylesheet" href="./css/iletisim.css" />
+}
+<main>
+    <div class="container">
+        <!-- BREADCRUMB -->
+        <p class="breadcrumb"><a href="/">Anasayfa</a> > İletişim</p>
+        <h1>İletişim Formu</h1>
+        <section id="iletisim-form">
+            <div class="wrapper">
+                @using (Html.BeginForm("SendEmail", "Content", FormMethod.Post, new { autocomplete = "off", id = "iletisim-form" }))
+                {
+                    <input type="text" placeholder="Ad Soyad" name="Fullname" />
+                    <div>
+                        <input type="mail" id="iletisim-mail-input" placeholder="E-mail" name="Email" />
+                        <span class="error" id="mail-error">Lütfen geçerli bir e-mail adresi girin.</span>
+                    </div>
+
+                    <input type="text" placeholder="Telefon" name="Phone" />
+                    <textarea rows="3" placeholder="Mesajınız" name="Message"></textarea>
+                    <button type="submit">GÖNDER</button>
+                }
+            </div>
+        </section>
+    </div>
+    <section id="bilgiler">
+        <div class="wrapper">
+            <p class="text">
+                Çıktılarınızı Türkiye'nin dört bir tarafına kargo ile gönderimini sağlıyoruz.
+                Siparişinizi en geç 2 gün içerisinde kargoya teslim ediyoruz.
+            </p>
+            <h3>Müşteri Hizmetleri İletişim</h3>
+            <p class="no"><a href="tel:+90 000 000 00 00">+90 000 000 00 00</a></p>
+            <p class="no"><a href="mailto:info@firmaadi.com">info@firmaadi.com</a></p>
+            <hr />
+            <h4>Sosyal Medya Hesaplarımız</h4>
+            <div class="social">
+                <a href="#"><img src="./images/instagram.svg" alt="instagram" /></a>
+                <a href="#"><img src="./images/twitter.svg" alt="twitter" /></a>
+                <a href="#"><img src="./images/youtube.svg" alt="youtube" /></a>
+            </div>
+        </div>
+    </section>
+</main>

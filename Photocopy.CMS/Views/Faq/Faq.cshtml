@@ -1,0 +1,58 @@
+﻿@model Photocopy.Entities.Dto.FaqDto
+
+@{
+    ViewData["Title"] = "Soru Güncelle";
+    Layout = "_Layout";
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-special">
+                        <h4 class="card-title ">Soru</h4>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("SaveOrUpdateFaq", "Faq", FormMethod.Post, new { autocomplete = "off" }))
+                        {
+                            <input type="hidden" name="Id" value="@Model.Id" />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Soru</label>
+                                        <input type="text" name="Question" class="form-control" value="@Model.Question" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Alt Soru</label>
+                                        <input type="text" name="SubQuestion" class="form-control" value="@Model.SubQuestion" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Cevap</label>
+                                        <input type="text" name="Answer" class="form-control" value="@Model.Answer" required>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <button type="submit" class="btn btn-info pull-right btn-sm">@(Model.Id != null ? "Güncelle" : "Ekle") </button>
+                            <div class="clearfix"></div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+   
+
+    </div>
+</div>

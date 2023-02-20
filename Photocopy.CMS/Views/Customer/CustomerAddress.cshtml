@@ -1,0 +1,51 @@
+﻿@model Photocopy.Entities.Dto.CustomerAddressDto
+@{
+    ViewData["Title"] = "Müşteri Bilgileri";
+    Layout = "_Layout";
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title">Müşteri @(Model.Id != null ? "Güncelle" : "Ekle")</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="/User/User" autocomplete="off">
+                            <input type="hidden" name="Id" value="@Model.Id" />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Kullanıcı Adı</label>
+                                        <input type="text" class="form-control" name="Name" value="@Model.CityCode" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Müşteri Soyad</label>
+                                        <input type="text" class="form-control" name="LastName" value="@Model.DistrictCode" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Telefon</label>
+                                        <input type="tel" class="form-control" name="PhoneNumber" value="@Model.Address" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-info pull-right">@(Model.Id != null ? "Güncelle" : "Ekle")</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+   
+    </div>
+</div>

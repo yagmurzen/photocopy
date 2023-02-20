@@ -1,0 +1,27 @@
+﻿@model WebUI.Model.FileDto
+<div class="form-group @Model.CssClass">
+    <label class="col-lg-3 control-label">@Model.Label</label>
+    <input type="hidden"  id="@Model.Id" name="@Model.Name" value="@Model.Value" class="@Model.CssClass @(Model.IsRequired ? "" : "notRequire")"/>
+    <div class="col-lg-9 media">
+    
+        <div class="media-body">
+            <div id="@(Model.Id + "Path")" class="row col-md-12">
+                @if(string.IsNullOrEmpty(@Model.Value))
+                {
+                    <span>[Dosya yok]</span>
+                    
+                }
+                else
+                {
+                    @Model.Value <a href="@Model.Value" target="_blank"><i class="fa fa-external-link"></i></a>
+                }
+            </div>
+            <br/>
+            <br/>
+            <input type="file" id="@(Model.Id + "Upload")" name="@(Model.Name + "Upload")" data-id="@Model.Id"  title="Change" class="btn btn-sm btn-info m-b-small">
+            
+            <br/>
+            <button  class="upload-file-start-btn btn btn-sm btn-default" data-id="@Model.Id">Yükle</button>
+        </div>
+    </div>
+</div>

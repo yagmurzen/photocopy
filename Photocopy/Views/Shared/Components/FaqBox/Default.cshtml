@@ -1,0 +1,22 @@
+﻿@model IList<Photocopy.Entities.Dto.FaqDto>
+
+<section id="sikca-sorulan-sorular">
+    <div class="container">
+        <div>
+            <h3>SIKÇA SORULANLAR</h3>
+            @foreach (var item in Model)
+            {
+                <button class="accordion">
+                    @item.Question
+                    <div class="arrow"></div>
+                </button>
+
+                <div class="panel">
+                    <p>
+                        @item.Answer
+                    </p>
+                </div>
+            }
+        </div>
+    </div>
+</section>

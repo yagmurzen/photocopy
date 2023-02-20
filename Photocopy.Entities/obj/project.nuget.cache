@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "gYo/RMD8KWBA4oDEhEELTehVH0VkkOW4dazlVgly3SgESFQt3bbsfWAKqUzP7JYMcSIpMXzhL2XjIY+SYGnaCQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\LENOVO\\source\\repos\\Photocopy.UI\\Photocopy.Entities\\Photocopy.Entities.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.17\\microsoft.aspnetcore.http.features.5.0.17.nupkg.sha512",
+    "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.1\\microsoft.extensions.primitives.5.0.1.nupkg.sha512",
+    "C:\\Users\\LENOVO\\.nuget\\packages\\system.io.pipelines\\5.0.2\\system.io.pipelines.5.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

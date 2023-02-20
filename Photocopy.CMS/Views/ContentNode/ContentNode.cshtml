@@ -1,0 +1,208 @@
+﻿@model Photocopy.Entities.Dto.ContentNodeDto
+
+@{
+    ViewData["Title"] = "İçerik Sayfası";
+    Layout = "_Layout";
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-special">
+                        <h4 class="card-title ">@Model.Name Sayfası</h4>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("SaveOrUpdateContentNode", "ContentNode", FormMethod.Post, new { autocomplete = "off" }))
+                        {
+                            <input type="hidden" name="Id" value="@Model.Id" />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Sayfa Adı</label>
+                                        <input type="text" name="Name" class="form-control" value="@Model.Name" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-info pull-right btn-sm">@(Model.Id != null ? "Güncelle" : "Ekle") </button>
+                            <div class="clearfix"></div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        @if (Model.Id != null)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-special">
+
+                            <form method="post" action="/ContentNode/ContentPage?contentNodeId=@Model.Id&contentPageId=">
+                                <span class="card-title">Sayfa Listesi</span>
+                                @if (Model.Pages.Count == 0)
+                                {
+                                    <button type="submit" class="btn btn-default pull-right btn-sm">Sayfa Oluştur</button>
+                                }
+                            </form>
+
+
+                        </div>
+
+
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                @if (Model.Pages.Count > 0)
+                                {
+                                    <table class="table">
+                                        <thead class=" text-info">
+                                        <th>
+                                            Sayfa Numarası
+                                        </th>
+                                        <th>
+                                            Sayfa Adı
+                                        </th>
+                                        <th class="td-actions text-right">
+                                            İşlemler
+                                        </th>
+
+                                        </thead>
+                                        <tbody>
+                                            @if (Model.Pages != null)
+                                            {
+                                                @foreach (var item in Model.Pages)
+                                                {
+                                                    <tr>
+                                                        <td>@item.Id</td>
+                                                        <td>@item.PageTitle</td>
+                                                        <td class="td-actions text-right">
+
+                                                            <form method="post" action="/ContentNode/DeleteContentPage?contentNodeId=@Model.Id&contentPageId=@item.Id">
+                                                                <button type="button" rel="tooltip" title="Edit Task" class="delete btn btn-warning btn-link btn-sm" data-contentNodeId="@Model.Id" data-pageId="@item.Id">
+                                                                    <i class="material-icons">delete</i>
+                                                                </button>
+                                                            </form>
+                                                            <form method="post" action="/ContentNode/ContentPage?contentNodeId=@Model.Id&contentPageId=@item.Id">
+                                                                <button type="submit" rel="tooltip" title="Edit Task" class="btn btn-info btn-link btn-sm">
+                                                                    <i class="material-icons">edit</i>
+                                                                </button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                    </table>
+                                }
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            @* <div class="row">
+        <div class="col-md-12">
+        <div class="card">
+        <div class="card-header card-header-special">
+        <form method="post" action="/ContentNode/ContentGallery?contentGalleryId=">
+        <span class="card-title">Galeri Listesi</span>
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <input type="hidden" name="ContentNodeId" value="@Model.Id" />
+        <button type="submit" class="btn btn-info pull-right btn-sm">Galeri Oluştur</button>
+        </form>
+        </div>
+        @if (Model.GaleryList != null)
+        {
+        <div class="card-body">
+        <div class="table-responsive">
+        <table class="table">
+        <thead class=" text-info">
+        <th>
+        Galeri ID
+        </th>
+        <th>
+        Galeri Adı
+        </th>
+        <th class="td-actions text-right">
+        İşlemler
+        </th>
+
+        </thead>
+        <tbody>
+        @foreach (var item in Model.GaleryList)
+        {
+        <tr>
+        <td>@item.Id</td>
+        <td>@item.Name</td>
+        <td class="td-actions text-right">
+        <form method="post" action="/ContentNode/ContentGallery?contentGalleryId=@item.Id">
+        <button type="submit" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
+        <i class="material-icons">edit</i>
+        </button>
+        </form>
+        </td>
+        </tr>
+        }
+
+        </table>
+        </div>
+        </div>
+        }
+        </div>
+        </div>
+
+        </div>
+        *@
+        }
+
+    </div>
+</div>
+
+<!-- Modal Delete data-bs-toggle="modal" data-bs-target="#deleteModal"-->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/ContentNode/DeleteContentPage" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sil</h5>
+                    <input type="hidden" id="contentPageId" name="contentPageId" value="" />
+                    <input type="hidden" id="contentNodeId" name="contentNodeId" value="" />
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Silmek İstediğinize Emin misiniz?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeç</button>
+                    <button type="submit" class="btn btn-primary">Sil</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts
+    {
+    <script>
+        $('form .delete').click(function (e) {
+            e.preventDefault();
+
+            $("#contentPageId").val($(this).attr("data-pageId"));
+            $("#contentNodeId").val($(this).attr("data-contentNodeId"));
+
+            $('#deleteModal').modal({
+                show: true
+            });
+        });
+    </script>
+}

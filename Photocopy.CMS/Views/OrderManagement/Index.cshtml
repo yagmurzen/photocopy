@@ -1,0 +1,179 @@
+﻿@model Photocopy.Entities.Dto.OrderListDto
+
+@{
+    ViewData["Title"] = "Sipariş Detay";
+    Layout = "_Layout";
+}
+<div class="content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title">Sipariş Detay</h4>
+                    </div>
+                    <div class="card-body">
+                        <form autocomplete="off" method="post" action="/OrderManagement">
+                            <input type="hidden" name="Id" value="@Model.Id" />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Müşteri Numarası</label>
+                                        <a href="/Customer?customerId=@Model.CustomerId" class=" btn btn-warning btn-link btn-sm">@Model.CustomerId</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Kargo Firması</label>
+                                        <select class="form-select custom-select" aria-label="Default select example" name="CargoCompany" value="@Model.CargoCompanyId" disabled>
+                                            <option value="0">Mng Kargo</option>
+                                            <option value="1">Aras Kargo</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Ödeme Türü</label>
+                                        <select class="form-select custom-select" aria-label="Default select example" name="PaymentType" value="@Model.PaymentType" disabled>
+                                            <option value="0">Kredi Kartı</option>
+                                            <option value="1">Havale</option>
+                                        </select>
+                                    </div>
+                                </div>
+                              
+                              
+                            </div>
+                            <div class="row">
+
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Sipariş Notu</label>
+                                        <input type="text" class="form-control" name="Notes" value="@Model.Notes" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Toplam Fiyat</label>
+                                        <input type="email" class="form-control" value="@Model.TotalPrice" name="TotalPrice" disabled>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Ödeme Durumu</label>
+                                        <select class="form-select custom-select" aria-label="Default select example" name="PaymentState" value="@Model.PaymentState" >
+                                            <option value="0">Ödeme İşlemi Tamamlanmadı</option>
+                                            <option value="1">Ödeme İşlemi Tamamlandı</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+
+                                    @await Component.InvokeAsync("OrderState",Model.OrderStateId)
+
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-info pull-right">@(Model.Id != null ? "Güncelle" : "Ekle")</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-special">
+                        <form method="post">
+                            <span class="card-title ">@Model.Id Numaralı Sipariş Detay</span>
+
+                        </form>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-info">
+                                <th>
+                                    Sipariş Detay No
+                                </th>
+                                <th>
+                                    Format
+                                </th>
+                                <th>
+                                    Kombinasyon
+                                </th>
+                                <th>
+                                    Taraf
+                                </th>
+                                <th>
+                                    Yön
+                                </th>
+                                <th>
+                                    Renk
+                                </th>
+                                <th>
+                                    Kalite
+                                </th>
+                                <th>
+                                    Ciltleme
+                                </th>
+                                <th>
+                                    Kağıt Türü
+                                </th>
+                                <th>
+                                    Pdf Sayfa Sayısı
+                                </th>
+                                <th>
+                                    Dosya Sayısı
+                                </th>
+                                <th>
+                                    Birim Fiyat (TL)
+                                </th>
+                                <th>
+                                    Sayfa Fiyat (TL)
+                                </th>
+                                <th>
+                                    Dosya Fiyat (TL)
+                                </th>
+
+                                <th class="td-actions text-right">
+                                    Dosya
+                                </th>
+
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.OrderDetails)
+                                    {
+                                        <tr>
+                                            <td>@item.Id</td>
+                                            <td>@item.Format.ToString()</td>
+                                            <td>@item.Combination.ToString()</td>
+                                            <td>@item.Side.ToString()</td>
+                                            <td>@item.Rotate.ToString()</td>
+                                            <td>@(item.Colourfull == 1 ? "Renkli" : "Siyah Beyaz")</td>
+                                            <td>@(item.Quality == 1 ? "Yüksek" : "Standart")</td>
+                                            <td>@item.Binding</td>
+                                            <td>@item.PaperType</td>
+                                            <td>@item.PdfPageCount</td>
+                                            <td>@item.Count</td>
+                                            <td>@item.UnitPrice</td>
+                                            <td>@item.PagePrice</td>
+                                            <td>@item.FilePrice</td>
+
+                                            <td><a href="/OrderManagement/UploadData?uploadDataId=@item.UploadDataId" class=" btn btn-warning btn-link btn-sm">Dosyayı Görüntüle</a></td>
+
+                                        </tr>
+                                    }
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,100 @@
+﻿@section customStyle {
+    <link rel="stylesheet" href="./css/sepet.css" />
+}
+<main>
+    <div class="container">
+        <!-- BREADCRUMB -->
+        <p class="breadcrumb"><a href="/">Anasayfa</a> > Sepetim</p>
+
+        <h2 class="page-title">Sipariş İçeriği</h2>
+
+        <!-- SEPET ICERIGI -->
+        <section id="sepet-icerigi">
+            @await Component.InvokeAsync("OrderBoxItem")            
+        </section>
+
+        <!-- SIPARIS BILGILERI -->
+        <section id="siparis-bilgileri">
+            <form id="frmOrder" method="post" action="/Siparis">
+                <h2>Sipariş Bilgileri</h2>
+                <div class="inputs-wrapper">
+                    <div class="input1">
+                        <input type="text" placeholder="Adınız" name="Customer.Name" />
+                    </div>
+                    <div class="input2">
+                        <input type="text" placeholder="Soyadınız" name="Customer.LastName" />
+                    </div>
+                    <div class="input3">
+                        <input type="tel" placeholder="(_ _ _) _ _ _ _ _ _ _" name="Customer.PhoneNumber" />
+                    </div>
+                    <div class="input4">
+                        <input type="email" placeholder="E-posta Adresiniz" name="Customer.Email" />
+                    </div>
+                    <div class="input5">
+                        @await Component.InvokeAsync("City")
+
+                    </div>
+                    <div class="input6 districtList">
+                        @await Component.InvokeAsync("District")
+
+                    </div>
+                    <div class="input7">
+                        <textarea rows="3"
+                                  placeholder="Mahalle, Cadde, Sokak, Dış Kapı No, Daire No Yazınız." name="Customer.Address.Address"></textarea>
+                    </div>
+                    <div class="input8">
+                        <textarea rows="3" placeholder="Siparişiniz ile İlgili Notunuzu Yazınız." name="Notes"></textarea>
+                    </div>
+                </div>
+                <h2>Kargo Firması Seçin</h2>
+                <div class="kargo-secin">
+                    <div class="input-item">
+                        <input type="radio" id="aras" name="CargoCompany" value="ARAS" />
+
+                        <label for="aras">
+                            <div><img src="./images/aras.svg" alt="aras" /></div>
+                            <div class="text">
+                                <p class="title">Aras Kargo</p>
+                                <p class="description">Türkiye’nin her yerine gönderim (Köyler HARİÇ)</p>
+                            </div>
+                            <div class="kargo-ucret">25 TL</div>
+                        </label>
+                    </div>
+                    <div class="input-item">
+                        <input type="radio" name="CargoCompany" id="ptt" value="PTT" />
+                        <label for="ptt">
+                            <div><img src="./images/ptt.svg" alt="ptt" /></div>
+                            <div class="text">
+                                <p class="title">PTT Kargo</p>
+                                <p class="description">Türkiye’nin her yerine gönderim (Köyler DAHİL)</p>
+                            </div>
+                            <div class="kargo-ucret">25 TL</div>
+                        </label>
+                    </div>
+                </div>
+                <h2>Ödeme Tipini Seçiniz</h2>
+                <div class="odeme-yontemi">
+                    <div class="input-item kredi-karti">
+                        <input type="radio" name="PaymentType" id="kredikarti" value="1"/>
+                        <label for="kredikarti">
+                            <p>Kredi Kartı ile Ödeme</p>
+                            <img src="./images/kredi-karti.svg" alt="" />
+                        </label>
+                    </div>
+                    <div class="input-item havaleeft">
+                        <input type="radio" name="PaymentType" id="havaleeft" value="2" />
+                        <label for="havaleeft">
+                            <p>Havale / EFT ile Ödeme</p>
+                            <p>
+                                Banka Adı: Ziraat Bankası - İsim İSİM <br />
+                                Iban No: TR720001002603632380415004
+                            </p>
+                            <p>Ödeme sonrası BİLGİ VERMENİZ GEREKMEKTEDİR!</p>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btnCompleted">Siparişi Tamamla</button>
+            </form>
+        </section>
+    </div>
+</main>

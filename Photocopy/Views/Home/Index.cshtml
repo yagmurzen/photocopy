@@ -1,0 +1,217 @@
+﻿@{
+    ViewData["Title"] = "Anasayfa";
+}
+
+<main>
+    <!-- HERO -->
+    @await Component.InvokeAsync("Slider")
+
+    <!-- NASIL SIPARIS VERIRIM -->
+    <section id="nasil-siparis-veririm">
+        <div class="container">
+            <h2>Nasıl Sipariş Veririm?</h2>
+            <div class="row">
+                <div class="col">
+                    <img src="./images/nasil-siparis-veririm-1.svg" alt="pdf" loading="lazy" />
+                    <h3>
+                        PDF Belgelerinizi <br />
+                        Yükleyin
+                    </h3>
+                    <p>Çıktı almak istediğiniz belgeyi veya belgelerinizi yükleyin</p>
+                </div>
+                <div class="col">
+                    <img src="./images/nasil-siparis-veririm-2.svg" alt="pdf" loading="lazy" />
+                    <h3>
+                        Özellikleri Seçin <br />
+                        Fiyat Hesaplayın
+                    </h3>
+                    <p>Yüklemiş olduğunuz belgenin çıktı özelliklerini belirleyerek Fiyatı Hesaplayın</p>
+                </div>
+                <div class="col">
+                    <img src="./images/nasil-siparis-veririm-3.svg" alt="pdf" loading="lazy" />
+                    <h3>
+                        Siparişi Tamamlayın <br />
+                        Kapınıza Gelsin
+                    </h3>
+                    <p>
+                        Tüm Türkiye’ye (köyler ve cezaevleri dahil) uygun kargo fiyatları ile gönderimini
+                        sağlayalım
+                    </p>
+                </div>
+            </div>
+            <div class="hesaplamak-icin-tiklayin">
+                <a href="/fotokopi-hesaplama"><button>Fotokopi Hesaplama için Tıklayın</button></a>
+            </div>
+            <h4 id="siparisLink">
+                Aşağıda bulunan alanı kullanarak sipariş detaylarınızı belirleyebilir, hızlı ve en kolay
+                biçimde sipariş verebilirsiniz.
+            </h4>
+        </div>
+    </section>
+    <!-- SIPARIS CONFIG-->
+    @await Component.InvokeAsync("OrderBox")
+
+    <!-- NASIL FOTOKOPİ SİPARİSİ-->
+    <section id="nasil-fotokopi-siparisi">
+        <div class="container">
+            <div class="description">
+                <h2>NASIL FOTOKOPİ SİPARİŞİ VEREBİLİRİM?</h2>
+                <p>
+                    Siyah Beyaz veya Renkli fotokopi siparişini nasıl verebileceğinizi anlatan kısa
+                    videoyu izleyerek doğru şekilde siparişinizi verebilirsiniz.
+                </p>
+                <button onclick="modalOpen('videoModal')">
+                    <img src="./images/play-icon.svg" alt="play" />
+                    Hemen İzle
+                </button>
+            </div>
+            <div class="fotokopi-image">
+                <img src="./images/nasil-fotokopi-siparisi.svg" alt="fotokopi" loading="lazy" />
+            </div>
+        </div>
+    </section>
+    <!-- ILETISIME GEC-->
+    <section id="iletisime-gec">
+        <div class="container">
+            <div class="description">
+                <h5>Destek ve Yardım Almak için İletişime Geçin</h5>
+                <p>Tüm Türkiye’ye uygun kargo fiyatları ile gönderim sağlıyoruz.</p>
+            </div>
+            <div class="button-wrapper">
+                <a href="/iletisim"><button>İletişime Geç</button></a>
+            </div>
+        </div>
+    </section>
+    <!-- SIKCA SORULAN SORULAR-->
+    @await Component.InvokeAsync("FaqBox")
+
+    <!-- BLOG POSTS -->
+    @await Component.InvokeAsync("BlogBox")
+
+</main>
+
+
+
+@section scripts
+    {
+
+
+    <script defer>
+        $(document).ready(function (e) {
+            
+            function calc(model,modal,element)
+            {
+                $.ajax({
+                    type: "POST",
+                    url: "Hesapla",
+                    data: model,
+                    success: function (data) {
+                        var str = " <p><span>Sayfa Sayısı</span> <span>" + $("#PdfPageCount").val() + "</span></p>";
+                        str = str + " <p><span>Sayfa Ücreti</span> <span>" + data.pagePrice + " &#8378;</span></p>";
+                        str = str + " <p><span>Dosya Ücreti</span> <span>" + data.filePrice + " &#8378;</span></p>";
+                        $(".results").html(str);
+                        if (modal) element.css("display", "none");
+                    }
+                });
+            
+            }
+
+            $(".sec-btn").click(function (e) {
+                var _parent = $(this).parent();
+
+                var val = _parent.find($($("input[type='radio']:checked"))).val();
+                var param_name = _parent.find($($("input[type='radio']"))).attr("param-name");
+
+                var param_text_val = _parent.find($($("input[type='radio']:checked"))).parent().find("label span").text();
+                $("input[name=" + param_name + "]").val(val);
+                $("input[name=" + param_name + "]").parent().find($("button")).text(param_text_val);
+
+                calc($("#frm-calc").serialize(), true, _parent.parent());
+            });
+
+
+            $("#count").change(function (e) {
+                calc($("#frm-calc").serialize(), false)
+            });
+
+            $("#btnAddOrder").click(function (e) {
+                e.preventDefault(); // avoid to execute the actual submit of the form.
+
+                var form = $("#frm-calc");
+
+                $.ajax({
+                    type: "GET",
+                    url: "SepeteEkle",
+                    data: form.serialize(),
+                    success: function (data) {
+                        $('.orderItemList').html(data)
+
+                        $("#dosyaBasligi").css("display", "none");
+                        $("#fileUploadArea").css("display", "flex");
+                        $("#uploadFileBtn").css("display", "none");
+                        $("#siparis-config-file-input").css("visibility", "visible");
+                        $("#fileInputText").text("+ Tıklayın Dosyanızı Seçin");
+                        $("#btnContainer").css("display", "none");
+
+                    }
+                });
+
+            });
+
+            $("#uploadFileBtn").click(function (e) {
+                e.preventDefault(); // avoid to execute the actual submit of the form.
+
+                var formData = new FormData();
+                formData.append('File', $('input[type=file]')[0].files[0]);
+
+                $.ajax({
+                    type: "POST",
+                    url: "DosyaYukle",
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+
+                        $("#FileId").val(data.id);
+                        $("#FileName").val(data.fileName);
+                        const reader = new FileReader();
+                        reader.readAsBinaryString($('input[type=file]')[0].files[0]);
+                        reader.onloadend = () => {
+                            const count = reader.result.match(/\/Type[\s]*\/Page[^s]/g).length;
+                            $("#PdfPageCount").val(count);
+
+                 
+                            calc($("#frm-calc").serialize(), false)
+
+                            let btnContainer = document.getElementById("btnContainer");
+                            let inputItems = document.getElementsByClassName("input-item-button");
+
+                            btnContainer.style.display = "block";
+                            [...inputItems].map(item => {
+                                item.disabled = false;
+                            });
+                        }
+
+                    }
+                });
+
+            });
+
+            $("body").on("click", ".item-delete", function (e) {
+                e.preventDefault(); // avoid to execute the actual submit of the form.
+
+                $.ajax({
+                    type: "GET",
+                    url: "SepettenCikar",
+                    data: { id: $(this).attr("data-id") },
+                    success: function (data) {
+                        $('.orderItemList').html(data);
+                    }
+                });
+
+            });
+
+         
+        });
+    </script>
+}

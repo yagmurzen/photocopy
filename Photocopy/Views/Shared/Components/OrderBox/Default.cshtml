@@ -1,0 +1,305 @@
+﻿
+<section id="siparis-config">
+    <div class="container">
+        <p id="dosyaBasligi"></p>
+        <form enctype="multipart/form-data">
+            <div class="file-input" id="fileUploadArea">
+                <input class="file-upload-input" type="file" name="UploadDataId" id="siparis-config-file-input" />
+
+                <div class="drag-text">
+                    <h3 id="fileInputText">+ Tıklayın Dosyanızı Seçin</h3>
+                    <button type="button" class="uploadFileBtn" id="uploadFileBtn">DOSYAYI YÜKLE</button>
+                </div>
+            </div>
+        </form>
+
+        <form method="post" id="frm-calc">
+            <input type="hidden" name="UploadDataId" id="FileId" />
+            <input type="hidden" name="PdfPageCount" id="PdfPageCount" />
+            <input type="hidden" name="FileName" id="FileName" />
+
+            <div class="inputs">
+                <div class="input-item">
+                    <label>Kağıt Boyutu</label>
+                    <input type="hidden" name="Format" id="Format" value="A4" />
+                    <button type="button" class="input-item-button" onclick="modalOpen('kagitBoyutu')" disabled>
+                        A4
+                    </button>
+                </div>
+
+                <div class="input-item">
+                    <input type="hidden" name="Colourfull" value="0" />
+
+                    <label>Renk</label>
+                    <button type="button" class="input-item-button" onclick="modalOpen('renkSecimi')" disabled>
+                        Siyah - Beyaz
+                    </button>
+                </div>
+                <div class="input-item">
+                    <label>Baskı Şekli</label>
+                    <input type="hidden" name="Side" value="TEK" />
+
+                    <button type="button" class="input-item-button" onclick="modalOpen('baskiSekli')" disabled>
+                        Tek Taraflı
+                    </button>
+                </div>
+                <div class="input-item">
+                    <label>Kombinasyon</label>
+                    <input type="hidden" name="Combination" value="x1" />
+                    <button type="button" class="input-item-button" onclick="modalOpen('kombinasyonSecimi')" disabled>
+                        1x1
+                    </button>
+                </div>
+                <div class="input-item">
+                    <input type="hidden" name="Binding" value="Istemiyorum" />
+
+                    <label>Cilt</label>
+                    <button type="button" class="input-item-button" onclick="modalOpen('ciltSecimi')" disabled>
+                        İstemiyorum
+                    </button>
+                </div>
+                <div class="input-item">
+                    <input type="hidden" name="Quality" value="0" />
+
+                    <label>Kalite</label>
+                    <button type="button" class="input-item-button" onclick="modalOpen('kaliteSecimi')" disabled>
+                        STANDART
+                    </button>
+                </div>
+                <div class="input-item">
+
+                    <label>Kopya Sayısı</label>
+                    <input type="number" value="1" name="Count" id="count" />
+                </div>
+            </div>
+        </form>
+
+        <div class="result">
+            <div class="results">
+                <p><span>Sayfa Sayısı</span> <span>0</span></p>
+                <p><span>Sayfa Ücreti</span> <span>0,00 &#8378;</span></p>
+                <p><span>Dosya Ücreti</span> <span>0,00 &#8378;</span></p>
+            </div>
+            <div class="btnContainer btnCalculate" id="btnContainer">
+                <button type="submit" id="btnAddOrder">Siparişi Ekle</button>
+            </div>
+        </div>
+        <hr />
+        <div class="orderItemList" style="display: contents;">
+            @await Component.InvokeAsync("OrderBoxItem")
+        </div>
+        <a href="/sepet">
+            <button class="sepeteGitveTamamla" id="sepeteGitveTamamla">
+                Sepete Git ve Siparişi Tamamla
+            </button>
+        </a>
+    </div>
+</section>
+
+<!-- MODALS -->
+<!-- Kağıt Boyutu Seçimi -->
+<div id="kagitBoyutu" class="modal inputs-modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <h3>Kağıt Boyutu Seçin</h3>
+
+        <div>
+            <div class="option">
+                <input type="radio" id="a4" name="kagitBoyutu" param-name="Format" value="A4" checked />
+                <label for="a4">
+                    <img src="./images/kagit.svg" alt="" />
+                    <span>A4</span>
+                </label>
+            </div>
+            <div class="option">
+                <input type="radio" id="a3" name="kagitBoyutu" param-name="Format" value="A3" />
+                <label for="a3">
+                    <img src="./images/kagit.svg" alt="" />
+                    <span>A3</span>
+                </label>
+            </div>
+            <div class="option">
+                <input type="radio" id="a5" name="kagitBoyutu" param-name="Format" value="A5" />
+                <label for="a5">
+                    <img src="./images/kagit.svg" alt="" />
+                    <span>A5</span>
+                </label>
+            </div>
+        </div>
+
+        <button type="button" class="sec-btn">Seç</button>
+    </div>
+</div>
+
+<!-- Renk Seçimi -->
+<div id="renkSecimi" class="modal inputs-modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <h3>Renk Seçin</h3>
+
+        <div>
+            <div class="option">
+                <input type="radio" id="color-1" name="renkSecimi" param-name="Colourfull" value="0" checked />
+                <label for="color-1">
+                    <img src="./images/kagit.svg" alt="" />
+                    <span>Siyah Beyaz</span>
+                </label>
+            </div>
+            <div class="option">
+                <input type="radio" id="color-0" name="renkSecimi" param-name="Colourfull" value="1" />
+                <label for="color-0">
+                    <img src="./images/kagit.svg" alt="" />
+                    <span>Renkli</span>
+                </label>
+            </div>
+        </div>
+        <button type="button" class="sec-btn">Seç</button>
+    </div>
+</div>
+
+<!-- Baskı Şekli Seçimi -->
+<div id="baskiSekli" class="modal inputs-modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <h3>Baskı Şekli Seçin</h3>
+
+        <div>
+            <div class="option">
+                <input type="radio" id="single" name="baskiSekli" param-name="Side" value="TEK" checked />
+                <label for="single">
+                    <img src="./images/kagit.svg" alt="" />
+                    <span>Tek</span>
+                </label>
+            </div>
+            <div class="option">
+                <input type="radio" id="dual" name="baskiSekli" param-name="Side" value="CIFT" />
+                <label for="dual">
+                    <img src="./images/kagit.svg" alt="" />
+                    <span>Çift</span>
+                </label>
+            </div>
+        </div>
+        <button type="button" class="sec-btn">Seç</button>
+    </div>
+</div>
+
+<!-- Kombinasyon Seçimi -->
+<div id="kombinasyonSecimi" class="modal inputs-modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <h3>Kombinasyon Seçin</h3>
+
+        <div>
+            <div class="option">
+                <input type="radio" id="x1" name="kombinasyonSecimi" param-name="Combination" value="x1" checked/>
+                <label for="x1">
+                    <img src="./images/kagit.svg" alt="" />
+                    <span>1X1</span>
+                </label>
+            </div>
+            <div class="option">
+                <input type="radio" id="x2" name="kombinasyonSecimi" param-name="Combination" value="x2" />
+                <label for="x2">
+                    <img src="./images/kagit.svg" alt="" />
+                    <span>1X2</span>
+                </label>
+            </div>
+            <div class="option">
+                <input type="radio" id="x3" name="kombinasyonSecimi" param-name="Combination" value="x3" />
+                <label for="x3">
+                    <img src="./images/kagit.svg" alt="" />
+                    <span>1X3</span>
+                </label>
+            </div>
+            <div class="option">
+                <input type="radio" id="x4" name="kombinasyonSecimi" param-name="Combination" value="x4" />
+                <label for="x4">
+                    <img src="./images/kagit.svg" alt="" />
+                    <span>1X4</span>
+                </label>
+            </div>
+        </div>
+
+        <button type="button" class="sec-btn">Seç</button>
+    </div>
+</div>
+
+<!-- Kağıt Boyutu Seçimi -->
+<div id="ciltSecimi" class="modal inputs-modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <h3>Cilt Seçin</h3>
+        <div>
+            <div class="option">
+                <input type="radio" id="id-Istemiyorum" name="ciltSecimi" param-name="Binding" value="Istemiyorum" checked />
+                <label for="id-Istemiyorum">
+                    <img src="./images/kagit.svg" alt="" />
+                    <span>İstemiyorum</span>
+                </label>
+            </div>
+            <div class="option">
+                <input type="radio" id="id-Sprial" name="ciltSecimi" param-name="Binding" value="Sprial" />
+                <label for="id-Sprial">
+                    <img src="./images/kagit.svg" alt="" />
+                    <span>Spiral</span>
+                </label>
+            </div>
+            <div class="option">
+                <input type="radio" id="id-Kenardan_Zımba" name="ciltSecimi" param-name="Binding" value="Kenardan_Zımba" />
+                <label for="id-Kenardan_Zımba">
+                    <img src="./images/kagit.svg" alt="" />
+                    <span>Kenardan Zımba</span>
+                </label>
+            </div>
+            <div class="option">
+                <input type="radio" id="id-Sol_Ustten_Zımba" name="ciltSecimi" param-name="Binding" value="Sol_Ustten_Zımba" />
+                <label for="id-Sol_Ustten_Zımba">
+                    <img src="./images/kagit.svg" alt="" />
+                    <span>Sol üstten Zımba</span>
+                </label>
+            </div>
+        </div>
+
+        <button type="button" class="sec-btn">Seç</button>
+    </div>
+</div>
+
+<!-- Kağıt Boyutu Seçimi -->
+<div id="kaliteSecimi" class="modal inputs-modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <h3>Kalite Seçin</h3>
+
+        <div>
+            <div class="option">
+                <input type="radio" id="id-0" name="kaliteSecimi" param-name="Quality" value="0" checked />
+                <label for="id-0">
+                    <img src="./images/kagit.svg" alt="" />
+                    <span>Standart</span>
+                </label>
+            </div>
+            <div class="option">
+                <input type="radio" id="id-1" name="kaliteSecimi" param-name="Quality" value="1" />
+                <label for="id-1">
+                    <img src="./images/kagit.svg" alt="" />
+                    <span>Yüksek</span>
+                </label>
+            </div>
+        </div>
+
+        <button type="button" class="sec-btn">Seç</button>
+    </div>
+</div>
+

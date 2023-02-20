@@ -1,0 +1,11 @@
+﻿@model IList<Photocopy.Entities.Dto.WebUI.DistrictDto>
+<select required name="Customer.Address.DistrictCode">
+    <option value="" disabled selected>İlçe Seçiniz</option>
+   @if (Model!=null)
+    {
+        @foreach (var item in Model)
+        {
+            <option value="@item.code">@item.name</option>
+        }
+    }
+</select>

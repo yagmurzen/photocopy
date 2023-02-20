@@ -1,0 +1,187 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Photocopy</title>
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+
+    <!--  CSS -->
+    <link rel="stylesheet" href="./css/style.css" />
+    @await RenderSectionAsync("CustomStyle", required: false)
+
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="nav-logo">
+                    <h1 class="logo-placeholder"><a href="/">LOGO</a></h1>
+                    <img src="./images/menu-bars.svg"
+                         class="mobile-nav-bars"
+                         id="menu-collapse-btn"
+                         style="display: none"
+                         alt="menu-collapse" />
+                </div>
+                <div class="navbar" id="navbar">
+                    <a href="#nasil-siparis-veririm">Nasıl Sipariş Veririm?</a>
+                    <a href="#sikca-sorulan-sorular">Sıkça Sorulan Sorular</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/iletisim">İletişim</a>
+                    <a href="#" onclick="modalOpen('siparisTakip')">Sipariş Takip</a>
+                </div>
+                <div class="cta" id="cta">
+                    <a href="#siparisLink"><button class="siparis-ver">Sipariş Ver</button></a>
+                    <a href="/sepet">
+                        <button class="sepetim">
+                            <img src="./images/shopping-bag.svg" alt="" /> Sepetim
+                        </button>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <!-- MAIN -->
+    @RenderBody()
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <nav>
+                <div class="nav-logo"><h1 class="logo-placeholder">LOGO</h1></div>
+                <div class="navbar">
+                    <a href="#nasil-siparis-veririm">Nasıl Sipariş Veririm?</a>
+                    <a href="#sikca-sorulan-sorular">Sıkça Sorulan Sorular</a>
+                    <a href="/blog">Blog</a>
+                    <a href="/iletisim">İletişim</a>
+                    <a style="cursor: pointer" onclick="modalOpen('siparisTakip')">Sipariş Takip</a>
+                </div>
+                <div class="cta">
+                    <a href="#siparisLink"><button class="siparis-ver">Sipariş Ver</button></a>
+                </div>
+            </nav>
+            <div class="card-logo">
+                <img src="./images/visa-mastercard-logos.svg" alt="visa-mastercard" loading="lazy" />
+            </div>
+        </div>
+    </footer>
+    <p class="copyRight">© 2022 Tüm Hakları Saklıdır.</p>
+
+    <!-- Siparis Sorgula -->
+    <div id="siparisTakip" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <form method="post" action="/siparis-detay">
+                <span class="close" onclick="modalClose('siparisTakip')">&times;</span>
+
+                <h3>Sipariş Durumu Sorgulama</h3>
+
+                <div>
+                    <div class="input-item">
+                        <label for="siparisId">Sipariş Numaranız</label>
+                        <input type="text" id="siparisId" name="siparisId" placeholder="Sipariş No" />
+                    </div>
+                    @*<div class="input-item">
+                        <label for="telefonNo">Cep Telefonunuz</label>
+                        <input type="tel" id="telefonNo" placeholder="(___) _______" />
+                    </div>*@
+                </div>
+
+                <button type="submit" id="btnSorgula">Sorgula</button>
+            </form>
+        </div>
+    </div>
+
+  @*  <!-- Siparis Durumu -->
+    <div id="siparisDurumu" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" onclick="modalClose('siparisDurumu')">&times;</span>
+
+            <h3>Sipariş Durumu</h3>
+
+            <div>
+                <p>Sipariş hazırlanıyor</p>
+            </div>
+
+            <button onclick="modalClose('siparisDurumu')">Tamam</button>
+        </div>
+    </div>*@
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <video width="100%" controls id="videoPlayer">
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+            </video>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="./js/script.js" defer></script>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.js"
+            integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+            crossorigin="anonymous"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+    <script defer>
+        $(document).ready(function (e) {
+
+
+            //$("#btnSorgula").click(function (e) {
+
+            //    $.ajax({
+            //        type: "POST",
+            //        url: "siparis-detay",
+            //        data: {
+            //            siparisId: $("#siparisNo").val()//,
+            //            //telefon: $("#telefonNo").val()
+            //        },
+            //        success: function (data) {
+            //            //modalClose('siparisTakip'); 
+            //            //modalOpen('siparisDurumu');
+            //            //$("#siparisDurumu div p").text(data);
+            //        }
+            //    });
+            //});
+
+            $("#city").change(function (e) {
+
+                $.ajax({
+                    type: "GET",
+                    url: "İlceler",
+                    data: {
+                        cityId:$("#city").val()
+                    },
+                    success: function (data) { 
+                        $('.districtList').html(data);
+
+                    }
+                });
+            });
+
+            $("body").on("click", ".item-delete", function (e) {
+                e.preventDefault(); // avoid to execute the actual submit of the form.
+
+                $.ajax({
+                    type: "GET",
+                    url: "SepettenCikar",
+                    data: { id: $(this).attr("data-id") },
+                    success: function (data) {
+                        $('#sepet-icerigi').html(data);
+                    }
+                });
+
+            });
+
+        });
+    </script>
+</body>
+</html>

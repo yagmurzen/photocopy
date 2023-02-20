@@ -1,0 +1,22 @@
+﻿@{
+	ViewData["Title"] = "Word to PDF - Word dosyasını PDF yapma";
+}
+@model Photocopy.Entities.Dto.WebUI.BlogListDetailDto
+
+
+@section customStyle {
+	<link rel="stylesheet" href="../css/yazi-detay.css" />
+}
+<main>
+	<div class="container">
+		<!-- BREADCRUMB -->
+		<p class="breadcrumb"><a href="/">Anasayfa</a> > Word to PDF - Word dosyasını PDF yapma</p>
+		<section id="yazi-detay">
+			<h1>@Model.PageTitle</h1>
+			<img id="post-cover" src="data:image /png;base64,@(Model.ThumbImagePath)" alt="" />
+			<div class="post-body">
+			 @Html.Raw(Model.HtmlContent)
+			</div>
+		</section>
+	</div>
+</main>

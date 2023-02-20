@@ -1,0 +1,41 @@
+﻿@model IList<Photocopy.Entities.Dto.SliderDto>
+
+@foreach (var item in Model) 
+{
+
+
+	<section id="hero">
+		<div class="container">
+			<div class="description">
+				<h2>
+					@item.Name
+				</h2>
+				<h3>@item.Subtitle</h3>
+				<p>
+					@item.Description
+				</p>
+				<a href="#siparisLink"><button class="hemen-siparis-ver">@item.ButtonText</button></a>
+			</div>
+			<div class="hero-image"></div>
+		</div>
+	</section>
+
+}
+@*
+<section id="hero">
+		<div class="container">
+			<div class="description">
+				<h2>
+					ONLİNE BASKI,<br />
+					ZAMANDAN TASARRUF!
+				</h2>
+				<h3>Kolay ve Hızlı 0,19 Kuruş</h3>
+				<p>
+					Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
+					has been the industry's standard dummy text ever since the 1500s
+				</p>
+				<a href="#siparisLink"><button class="hemen-siparis-ver">Hemen Sipariş Ver</button></a>
+			</div>
+			<div class="hero-image"></div>
+		</div>
+	</section>*@

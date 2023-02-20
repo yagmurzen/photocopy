@@ -1,0 +1,54 @@
+﻿@model IList<Photocopy.Entities.Dto.WebUI.CalculateDto>
+
+
+    @if (Model!=null)
+{@foreach (var item in Model)
+    {
+        <div class="sepeteEkleSonuc " id="sepeteEkleSonuc">
+            <div class="header">
+                <p id="sepeteEkleDosyaAdi"> @item.FileName</p>
+                <img src="./images/trash-icon.svg" alt="trash" data-id="@item.UploadDataId" class="item-delete" />
+            </div>
+            <div class="body">
+                <img src="./images/kagit.svg" alt="" />
+
+                <div class="bilgiler">
+                    <div class="pWrapper">
+                        <p>
+                            <span class="property">Özellik</span>
+                            <span class="secimler"> @item.Format - @(item.Colourfull == 0 ? "Siyah Beyaz" : "Renkli") - @item.Side - @item.Combination - @item.Binding - @(item.Quality == 0 ? "Standart" : "Kaliteli") </span>
+                        </p>
+                        <p>
+                            <span class="property">Baskı</span> <span class="secimler">@item.PdfPageCount X @item.Count </span>
+                        </p>
+                        <p>
+                            <span class="property">Fiyat</span>
+                            <span class="secimler">Sayfa Tutarı: @item.UnitPrice TL Adet Tutarı: @item.UnitPrice TL</span>
+                        </p>
+                    </div>
+                    <div class="toplamFiyat">
+                        <div>
+                            <p class="text">Toplam Fiyat</p>
+                            <p class="fiyat">@item.FilePrice TL</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mobileToplamFiyat" id="mobileToplamFiyat">
+                <div class="trash-div">
+                    <img src="./images/trash-icon.svg" alt="" />
+                </div>
+                <div class="toplamFiyat">
+                    <div>
+                        <p class="text">Toplam Fiyat</p>
+                        <p class="fiyat">@item.FilePrice TL</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+
+
+}
+

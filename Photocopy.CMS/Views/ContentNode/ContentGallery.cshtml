@@ -1,0 +1,130 @@
+﻿@model Photocopy.Entities.Domain.Galery
+
+@{
+    ViewData["Title"] = "Galeri";
+    Layout = "_Layout";
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-special">
+                        <h4 class="card-title ">@Model.Name</h4>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("SaveOrUpdateContentGallery", "ContentNode", FormMethod.Post))
+                        {
+                            <input type="hidden" name="Id" value="@Model.Id" />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Galeri Adı</label>
+                                        <input type="text" name="Name" class="form-control" value="@Model.Name">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-info pull-right">@(Model.Id != 0 ? "Güncelle" : "Ekle") </button>
+                            <div class="clearfix"></div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        @if (Model.Id != 0)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-special">
+                            <h4 class="card-title">Fotoğraf Listesi</h4>
+                            <form method="post" action="/ContentNode/SaveOrUpdateContentGalleryFile?contentGalleryId=">
+                                <input type="hidden" name="GaleryId" class="form-control" value="@Model.Id">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Fotoğraf</label>
+                                            <input type="text" class="form-control" name="Path" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Fotoğraf Adı</label>
+                                            <input type="text" class="form-control" name="Name" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Fotoğraf Açıklaması</label>
+                                            <input type="text" class="form-control" name="Description" value="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-info pull-right btn-sm">Ekle</button>
+                            </form>
+                        </div>
+                        @if (Model.GaleryFiles != null)
+                        {
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class=" text-info">
+                                        <th>
+                                            Görsel ID
+                                        </th>
+                                        <th>
+                                            Görsel Adı
+                                        </th>
+                                        <th class="td-actions text-right">
+                                            İşlemler
+                                        </th>
+
+                                        </thead>
+                                        <tbody>
+                                            @if (Model.GaleryFiles != null)
+                                            {
+                                                @foreach (var item in Model.GaleryFiles)
+                                                {
+                                                    <tr>
+                                                        <td>@item.Id</td>
+                                                        <td>@item.Name</td>
+                                                        <td class="td-actions text-right">
+                                                            <form method="post" action="/ContentNode/ContentPage?contentPageId=@item.Id">
+                                                                <button type="submit" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
+                                                                    <i class="material-icons">edit</i>
+                                                                </button>
+                                                            </form>
+                                                            <form method="post" action="/ContentNode/DeleteContentPage?contentPageId=@item.Id">
+                                                                <button type="submit" rel="tooltip" title="Edit Task" class="btn btn-white btn-link btn-sm">
+                                                                    <i class="material-icons">delete</i>
+                                                                </button>
+                                                            </form>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                    </table>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        }
+
+    </div>
+</div>

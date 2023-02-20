@@ -1,0 +1,12 @@
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Entities\bin\Debug\net7.0\Photocopy.Entities.deps.json
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Entities\bin\Debug\net7.0\Photocopy.Entities.dll
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Entities\bin\Debug\net7.0\Photocopy.Entities.pdb
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Entities\obj\Debug\net7.0\Photocopy.Entities.csproj.AssemblyReference.cache
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Entities\obj\Debug\net7.0\Photocopy.Entities.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Entities\obj\Debug\net7.0\Photocopy.Entities.AssemblyInfoInputs.cache
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Entities\obj\Debug\net7.0\Photocopy.Entities.AssemblyInfo.cs
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Entities\obj\Debug\net7.0\Photocopy.Entities.csproj.CoreCompileInputs.cache
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Entities\obj\Debug\net7.0\Photocopy.Entities.dll
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Entities\obj\Debug\net7.0\refint\Photocopy.Entities.dll
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Entities\obj\Debug\net7.0\Photocopy.Entities.pdb
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Entities\obj\Debug\net7.0\ref\Photocopy.Entities.dll

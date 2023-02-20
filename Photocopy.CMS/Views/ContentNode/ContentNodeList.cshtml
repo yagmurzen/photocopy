@@ -1,0 +1,102 @@
+﻿@model IList<Photocopy.Entities.Dto.ContentNodeDto>
+
+@{
+    ViewData["Title"] = "İçerik Listesi";
+    Layout = "_Layout";
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-special">
+                        <form method="post" action="/ContentNode/ContentNode?contentId=">
+                            <span class="card-title ">İçerik Listesi</span>
+
+                            <button type="submit" class="btn btn-default pull-right btn-sm">İçerik Oluştur</button>
+                        </form>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-info">
+                                <th>
+                                    İçerik Numarası
+                                </th>
+                                <th>
+                                    İçerik Adı
+                                </th>
+                                <th class="td-actions text-right">
+                                    İşlemler
+                                </th>
+
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.Id</td>
+                                            <td>@item.Name</td>
+                                            <td class="td-actions text-right">
+                                               
+                                                <form method="post" >
+                                                    <button type="button" rel="tooltip" title="Remove" class="delete btn btn-warning btn-link btn-sm" data-contentId="@item.Id">
+                                                    <i class="material-icons">delete</i>
+                                                </button>
+                                                </form>
+                                                 <form method="post" action="/ContentNode/ContentNode?contentId=@item.Id">
+                                                    <button type="submit" rel="tooltip" title="Edit Task" class="btn btn-info btn-link btn-sm" >
+                                                        <i class="material-icons">edit</i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Delete data-bs-toggle="modal" data-bs-target="#deleteModal"-->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/ContentNode/DeleteContentNode" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sil</h5>
+                    <input type="hidden" id="contentId" name="contentId" value="" />
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Silmek İstediğinize Emin misiniz?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeç</button>
+                    <button type="submit" class="btn btn-primary">Sil</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts
+    {
+    <script>
+        $('form .delete').click(function (e) {
+            e.preventDefault();
+
+            $("#contentId").val($(this).attr("data-contentId"));
+
+            $('#deleteModal').modal({
+                show: true
+            });
+        });
+    </script>
+}

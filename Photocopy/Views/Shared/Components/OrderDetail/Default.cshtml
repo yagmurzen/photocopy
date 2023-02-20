@@ -1,0 +1,51 @@
+﻿@model IList<Photocopy.Entities.Dto.WebUI.CalculateDto>
+
+
+@foreach (var item in Model)
+{
+    <div class="sepeteEkleSonuc">
+        <div class="urun-header">
+            <p id="sepeteEkleDosyaAdi">@item.FileName </p>
+        </div>
+        <div class="body">
+            <img src="./images/kagit.svg" alt="" />
+
+            <div class="bilgiler">
+                <div class="pWrapper">
+                    <p>
+                        <span class="property">Özellik</span>
+                        <span class="secimler"> 
+                        @item.Format
+                        @item.Combination
+                        @item.Colourfull
+                        @item.Quality
+                        @item.Binding
+                        @item.PaperType
+                        @item.Rotate
+                        @item.Side
+                        </span>
+                    </p>
+                    <p>
+                        <span class="property">Baskı</span> <span class="secimler">@item.Count @item.PdfPageCount </span>
+                    </p>
+                    <p>
+                        <span class="property">Fiyat</span>
+                        <span class="secimler">Sayfa Tutarı: @item.PagePrice TL Adet Tutarı: @item.UnitPrice  TL</span>
+                    </p>
+                </div>
+                <div class="toplamFiyat">
+                    <div>
+                        <p class="fiyat">@item.PagePrice  TL</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mobileToplamFiyat" id="mobileToplamFiyat">
+            <div class="toplamFiyat">
+                <div>
+                    <p class="fiyat">@item.FilePrice  TL</p>
+                </div>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,100 @@
+﻿@model Photocopy.Entities.Dto.WebUI.OrderInfoDto
+
+@section customStyle {
+    <link rel="stylesheet" href="./css/siparis-detay.css" />
+    <style>
+        #fatura-detay .main .sepeteEkleSonuc .header p {
+            color: #f84a00;
+        }        
+    </style>
+}
+
+<main>
+    <div class="container">
+        <!-- BREADCRUMB -->
+        <p class="breadcrumb"><a href="/">Anasayfa</a> > Sipariş Detay</p>
+        @if (Model!=null)
+        {
+            <section id="fatura-detay" class="detay">
+                <div class="header">
+                    <h2>Şipariş Numarası : @Model.OrderId</h2>
+                    <p class="siparis-no">@Model.OrderState.Text</p>
+                </div>
+                <div class="side">
+                    <h3>Sipariş Veren</h3>
+                    <p>@Model.Customer.Name @Model.Customer.LastName</p>
+                    <p>@Model.Customer.Email</p>
+                    <p>@Model.Customer.PhoneNumber</p>
+                    <p>@Model.Customer.City</p>
+                    <p>@Model.Customer.Adrress</p>
+                    <p>@Model.Notes</p>
+                </div>
+                <div class="main">
+                    <h3>Sipariş Detay</h3>
+
+
+                    @foreach (var item in Model.OrderDetail)
+                    {
+                        <div class="sepeteEkleSonuc " id="sepeteEkleSonuc">
+                            <div class="header">
+                                <p id="sepeteEkleDosyaAdi">@item.OrderDetailId -  @item.FileName</p>
+                            </div>
+                            <div class="body">
+                                <img src="./images/kagit.svg" alt="" />
+
+                                <div class="bilgiler">
+                                    <div class="pWrapper">
+                                        <p>
+                                            <span class="property">Özellik</span>
+                                            <span class="secimler"> @item.Properties </span>
+                                        </p>
+                                        <p>
+                                            <span class="property">Baskı</span> <span class="secimler">@item.PrintDetail</span>
+                                        </p>
+                                        <p>
+                                            <span class="property">Fiyat</span>
+                                            <span class="secimler">@item.PriceDetail</span>
+                                        </p>
+                                    </div>
+                                    <div class="toplamFiyat">
+                                        <div>
+                                            <p class="text">Toplam Fiyat</p>
+                                            <p class="fiyat">@item.Price TL</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mobileToplamFiyat" id="mobileToplamFiyat">
+                                <div class="trash-div">
+                                    <img src="./images/trash-icon.svg" alt="" />
+                                </div>
+                                <div class="toplamFiyat">
+                                    <div>
+                                        <p class="text">Toplam Fiyat</p>
+                                        <p class="fiyat">@item.Price TL</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <div class="kargo-ucreti">
+                        <p class="left"><span>Kargo Ücreti</span> (@Model.CargoCompanyName)</p>
+                        <p class="right">@Model.CargoCompanyPrice TL</p>
+                    </div>
+                    <hr />
+                    <div class="ucret-toplam">
+                        <p class="kk">@(Model.PaymentType == "2" ? "Havale(EFT)":"Kredi Kartı") Ödemesi</p>
+                        <p class="genel-toplam">Genel Toplam Fiyat : <span>@Model.TotalPrice TL</span></p>
+                    </div>
+                </div>
+            </section>
+        }
+        else
+        { <section id="fatura-detay" class="detay">
+                <div class="header">
+                    <p class="siparis-no">Sipariş Bulunamadı</p>
+                </div>
+            </section>
+        }
+    </div>
+</main>

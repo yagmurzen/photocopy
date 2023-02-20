@@ -1,0 +1,131 @@
+﻿@section customStyle {
+    <link rel="stylesheet" href="./css/fotokopi-hesaplama.css" />
+    <style>
+        .results {
+            display: flex;
+            background: white;
+            padding: 10px;
+            margin-top: 4%;
+        }
+
+        .results span {
+            color: #f84a00;
+            font-weight: 700;
+            padding-right: 10px;
+        }
+    </style>
+}
+
+<main>
+    <section class="container">
+        <!-- BREADCRUMB -->
+        <p class="breadcrumb"><a href="/">Anasayfa</a> > Fotokopi Hesaplama</p>
+        <h1>Fotokopi Ücret Hesaplama</h1>
+        <form method="post" id="frm-calc">
+            <section id="fotokopi-hesaplama">
+
+                <div class="image">
+                    <img src="./images/fotokopi-hesaplama.svg" alt="fotokopi-hesaplama">
+                </div>
+                <div class="form">
+
+
+                    <div class="wrapper">
+
+                        <div class="input-item">
+                            <input type="number" placeholder="Sayfa Sayısı" name="Count" />
+                            <input type="hidden" name="PdfPageCount" id="PdfPageCount" value="1" />
+                        </div>
+                        <div class="input-item">
+                            <select name="Format" required>
+                                <option value="" disabled selected>Kağıt Boyutu</option>
+                                <option value="A3">A3</option>
+                                <option value="A4">A3</option>
+                                <option value="A6">A3</option>
+
+                            </select>
+                        </div>
+                        <div class="input-item">
+                            <select name="Quality" required>
+                                <option value="" disabled selected>Kalite</option>
+                                <option value="0">Standart</option>
+                                <option value="1">Yüksek</option>
+                            </select>
+                        </div>
+
+                        <div class="input-item">
+                            <select name="Side" required>
+                                <option value="" disabled selected>Baskı Şekli</option>
+                                <option value="TEK">Tek</option>
+                                <option value="CIFT">Çift</option>
+                            </select>
+                        </div>
+
+                        <div class="input-item">
+                            <select name="Colourfull" required>
+                                <option value="" disabled selected>Renk</option>
+                                <option value="0">Siyah-Beyaz</option>
+                                <option value="1">Renkli</option>
+                            </select>
+                        </div>
+                        <div class="input-item">
+                            <select name="Combination" required>
+                                <option value="" disabled selected>Kombinasyon</option>
+                                <option value="x1">1X1</option>
+                                <option value="x2">1X2</option>
+                                <option value="x3">1X3</option>
+                                <option value="x4">1X4</option>
+
+                            </select>
+                        </div>
+                        <div class="input-item">
+                            <select name="Binding" required>
+                                <option value="" disabled selected>Cilt</option>
+                                <option value="Istemiyorum">İstemiyorum</option>
+                                <option value="Sprial">Sprial 1</option>
+                                <option value="Kenardan_Zımba">Kenardan Zımba</option>
+                                <option value="Sol_Ustten_Zımba">Sol Üstten Zımba</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button class="hesapla-btn" type="button">HESAPLA</button>
+
+                    <div class="results"></div>
+
+                </div>
+            </section>
+        </form>
+
+    </section>
+</main>
+
+
+@section scripts
+    {
+
+
+    <script defer>
+        $(document).ready(function (e) {
+
+
+            $(".hesapla-btn").click(function (e) {
+
+
+                $.ajax({
+                    type: "POST",
+                    url: "Hesapla",
+                    data: $("#frm-calc").serialize(),
+                    success: function (data) {
+                        var str = " <p><span>Sayfa Sayısı</span> <span>" + $("#PdfPageCount").val() + "</span></p>";
+                        str = str + " <p><span>Sayfa Ücreti</span> <span>" + data.pagePrice + " &#8378;</span></p>";
+                        str = str + " <p><span>Dosya Ücreti</span> <span>" + data.filePrice + " &#8378;</span></p>";
+                        $(".results").html(str);
+                    }
+                });
+            });
+
+
+        });
+    </script>
+}

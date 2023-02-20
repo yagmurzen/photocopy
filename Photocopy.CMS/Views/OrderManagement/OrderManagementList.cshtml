@@ -1,0 +1,81 @@
+﻿@model IList<Photocopy.Entities.Dto.OrderListDto>
+
+@{
+    ViewData["Title"] = "Sipariş Listesi";
+    Layout = "_Layout";
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-special">
+                        <form method="post">
+                            <span class="card-title ">Sipariş Listesi</span>
+
+                        </form>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-info">
+                                <th>
+                                    Sipariş Id
+                                </th>
+                                <th>
+                                    İşlem Tarihi
+                                </th>
+                                <th>
+                                    Sipariş Durumu
+                                </th>
+                                <th>
+                                    Ödeme Türü
+                                </th>
+                                <th>
+                                    Ödeme Durumu
+                                </th>
+                                <th>
+                                   Kargo Firması
+                                </th>
+                                <th>
+                                    Toplam Fiyat (TL)
+                                </th>
+                                <th>
+                                    Sipariş Notu
+                                </th>
+                                <th>
+                                   Müşteri Numarası
+                                </th>
+                                <th class="td-actions text-right">
+                                    İşlemler
+                                </th>
+
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.Id</td>
+                                            <td>@item.TransactionDate</td>
+                                            <td>@item.OrderState.Text</td>
+                                            <td>@(item.PaymentType==0 ? "Kredi Kartı" : "Havale/EFT")</td>
+                                            <td>@(item.PaymentState == 0 ? "Tamamlanmadı" : "Tamamlandı")</td>
+                                            <td>@(item.CargoCompanyId == 0 ? "Mng Kargo" : "Aras Kargo")</td>
+                                            <td>@item.TotalPrice</td>
+                                            <td>@item.Notes</td>
+                                            <td><a href="/Customer?customerId=@item.CustomerId" class=" btn btn-warning btn-link btn-sm">@item.CustomerId</a></td>
+
+                                            <td class="td-actions text-right">
+                                                <a href="/OrderManagement?orderId=@item.Id" class=" btn btn-warning btn-link btn-sm">Sipariş Detay</a>
+                                            </td>
+                                        </tr>
+                                    }
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

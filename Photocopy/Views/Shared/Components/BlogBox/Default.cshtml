@@ -1,0 +1,51 @@
+﻿@model IList<Photocopy.Entities.Dto.WebUI.BlogListDto>
+<section id="blog-posts">
+    <div class="container">
+        <h3>Blog</h3>
+        <div class="sub-title">
+            <h4>Yazılarımıza Göz Atın</h4>
+            <a href="/blog"><button>Tümünü Gör</button></a>
+        </div>
+        <div class="posts">
+            @foreach (var item in Model)
+            {
+                <a href="/blog/@item.Slug">
+                    <article>
+                        <img src="data:image /png;base64,@(item.ThumbImagePath)" alt="post" loading="lazy" />
+
+                        <h2>@item.PageTitle</h2>
+                    </article>
+                </a>
+            }
+        </div>
+        <div class="swiper mySwiper mobilePosts">
+            <div class="swiper-wrapper">
+                @foreach (var item in Model)
+                {
+                    <a href="/blog/@item.Slug">
+                        <article class="swiper-slide">
+                            <img src="data:image /png;base64,@(item.ThumbImagePath)" alt="post" loading="lazy" />
+
+                            <h2>@item.PageTitle</h2>
+                        </article>
+                    </a>
+                }
+                @*<article class="swiper-slide">
+                <img src="./images/post-cover.svg" alt="post" loading="lazy" />
+
+                <h2>Word to PDF - Word dosyasını PDF yapma</h2>
+                </article>
+                <article class="swiper-slide">
+                <img src="./images/post-cover.svg" alt="post" loading="lazy" />
+
+                <h2>Word to PDF - Word dosyasını PDF yapma</h2>
+                </article>
+                <article class="swiper-slide">
+                <img src="./images/post-cover.svg" alt="post" loading="lazy" />
+
+                <h2>Word to PDF - Word dosyasını PDF yapma</h2>
+                </article>*@
+            </div>
+        </div>
+    </div>
+</section>
