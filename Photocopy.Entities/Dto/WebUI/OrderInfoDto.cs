@@ -50,8 +50,9 @@ namespace Photocopy.Entities.Dto.WebUI
 
     public enum PaymentState
     { 
-        ToDo=0,
-        Done = 1
+        NotPayment = 0,
+        ToDo = 1,
+        Done = 2,
     }
 
    

@@ -10,6 +10,7 @@ namespace Photocopy.Core.Interface.Repository
     public interface IUnitOfWork : IDisposable
     {
         IBlogNodeRepository Blogs { get; }
+
         IContentNodeRepository Contents { get; }
         ICustomerRepository Customers { get; }
         IOrderRepository Orders { get; }
@@ -25,7 +26,7 @@ namespace Photocopy.Core.Interface.Repository
         ICargoFirmRepository CargoFirms { get; }
         IBasketRepository Baskets { get; }
         IBasketDetailRepository BasketDetails { get; }
-
+        IContactRepository Contacts { get; }
 
         Task<int> CommitAsync();
     }

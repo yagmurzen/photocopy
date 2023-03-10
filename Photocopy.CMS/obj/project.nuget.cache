@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "SW1TEDGqUnHuZV1DQrFT6yR0pt4EazTAifqs0CBbNdBtLMs3zXe2JdY6kfdK524beQobFv5m5gXlkTilVUa6ZQ==",
+  "dgSpecHash": "S2E8utIa9XJNmuHuq9J7jC/ZWh7HPMKADKnCmmBGNiFEWGlCoDZSqreNTHiwUO0enWNqiE5I5s+OnzPae1UQZQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\LENOVO\\source\\repos\\Photocopy.UI\\Photocopy.CMS\\Photocopy.CMS.csproj",
   "expectedPackageFiles": [
@@ -24,6 +24,7 @@
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\7.0.2\\microsoft.entityframeworkcore.sqlserver.7.0.2.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
+    "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512",

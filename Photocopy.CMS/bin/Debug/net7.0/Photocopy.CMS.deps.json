@@ -11,7 +11,6 @@
           "Microsoft.EntityFrameworkCore.Design": "7.0.1",
           "Microsoft.EntityFrameworkCore.SqlServer": "7.0.2",
           "Photocopy.Core": "1.0.0",
-          "Photocopy.DataAccess": "1.0.0",
           "Photocopy.Entities": "1.0.0",
           "Photocopy.Helper": "1.0.0",
           "Photocopy.Service": "1.0.0",
@@ -689,8 +688,7 @@
           "Microsoft.AspNetCore.DataProtection.Abstractions": "7.0.2",
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
           "Microsoft.Extensions.Http": "7.0.0",
-          "Photocopy.Core": "1.0.0",
-          "Photocopy.DataAccess": "1.0.0"
+          "Photocopy.Core": "1.0.0"
         },
         "runtime": {
           "Photocopy.Helper.dll": {}

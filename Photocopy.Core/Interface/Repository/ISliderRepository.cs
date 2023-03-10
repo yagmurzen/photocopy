@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace Photocopy.Core.Interface.Repository
 {
-    public interface ISliderRepository : IRepository<Slider>
+    public interface IContactRepository : IRepository<Contact>
     {
 
 

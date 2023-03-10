@@ -282,3 +282,5 @@ C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\obj\Debug\net7.0\refint\Phot
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\obj\Debug\net7.0\Photocopy.UI.pdb
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\obj\Debug\net7.0\Photocopy.UI.genruntimeconfig.cache
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\obj\Debug\net7.0\ref\Photocopy.UI.dll
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\bin\Debug\net7.0\IPara.DeveloperPortal.Core.dll
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\bin\Debug\net7.0\IPara.DeveloperPortal.Core.pdb

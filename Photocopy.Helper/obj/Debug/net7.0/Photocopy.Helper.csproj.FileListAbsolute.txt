@@ -2,10 +2,8 @@ C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Helper\bin\Debug\net7.0\Phot
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Helper\bin\Debug\net7.0\Photocopy.Helper.dll
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Helper\bin\Debug\net7.0\Photocopy.Helper.pdb
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Helper\bin\Debug\net7.0\Photocopy.Core.dll
-C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Helper\bin\Debug\net7.0\Photocopy.DataAccess.dll
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Helper\bin\Debug\net7.0\Photocopy.Entities.dll
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Helper\bin\Debug\net7.0\Photocopy.Core.pdb
-C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Helper\bin\Debug\net7.0\Photocopy.DataAccess.pdb
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Helper\bin\Debug\net7.0\Photocopy.Entities.pdb
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Helper\obj\Debug\net7.0\Photocopy.Helper.csproj.AssemblyReference.cache
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy.Helper\obj\Debug\net7.0\Photocopy.Helper.GeneratedMSBuildEditorConfig.editorconfig

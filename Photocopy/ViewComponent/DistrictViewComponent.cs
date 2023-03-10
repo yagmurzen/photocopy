@@ -20,20 +20,26 @@ namespace Photocopy.UI.Component
 
         public async Task<IViewComponentResult> InvokeAsync(string cityId)
         {
-            ApiResponse response = _httpClientExtensions.GetDistrict(cityId);
-            //{ "cityCode":"03","cityName":"AFYON","code":"85","name":"SİNANPAŞA"}
-            //var districts = _service.GetAllDisctirtById(cityId);
-
-            if (response.Success)
+            if (!String.IsNullOrEmpty(cityId))
             {
-                IList<DistrictDto> districts = JsonHelper.Deserialize<IList<DistrictDto>>(response.response.Repsonse);
 
-                return View(districts);
+
+                ApiResponse response = _httpClientExtensions.GetDistrict(cityId);
+                //{ "cityCode":"03","cityName":"AFYON","code":"85","name":"SİNANPAŞA"}
+                //var districts = _service.GetAllDisctirtById(cityId);
+
+                if (response.Success)
+                {
+                    IList<DistrictDto> districts = JsonHelper.Deserialize<IList<DistrictDto>>(response.response.Repsonse);
+
+                    return View(districts);
+                }
+                else
+                {
+                    return View();
+                }
             }
-            else
-            {
-                return View();
-            }
+            return View();
         }
     }
 }

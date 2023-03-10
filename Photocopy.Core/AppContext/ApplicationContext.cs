@@ -51,6 +51,8 @@ namespace Photocopy.Core.AppContext
         public DbSet<UploadData> UploadData { get; set; }
 
         public DbSet<OrderDetail> OrderDetail { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserRole>(entity =>
@@ -237,6 +239,10 @@ namespace Photocopy.Core.AppContext
                 entity.HasOne(s => s.Order)
                       .WithOne(i => i.CargoCompany)
                       .HasForeignKey<Order>(s => s.CargoCompanyId);
+            });
+            modelBuilder.Entity<Contact>(entity =>
+            {
+                entity.HasKey(ur => new { ur.Id });
             });
 
             modelBuilder.Entity<City>(entity =>

@@ -174,10 +174,10 @@ namespace Photocopy.Controllers
             {
                 customerId =null, //??//*
                 refCustomerId = "",
-                cityCode = Convert.ToInt32( model.Customer.Address.CityCode),//*
+                cityCode = Convert.ToInt32( model.Customer.Address.CityId),//*
                 cityName = "",
                 districtName = "",
-                districtCode = Convert.ToInt32(model.Customer.Address.DistrictCode),//*
+                districtCode = Convert.ToInt32(model.Customer.Address.DistrictId),//*
                 address = model.Customer.Address.Address,//*
                 bussinessPhoneNumber ="",
                 email = model.Customer.Email,//*
@@ -196,15 +196,17 @@ namespace Photocopy.Controllers
                 content = "Parça açıklama 1"
 
             });
-
+                      
            
             var apiResponse = _httpClientExtensions.CreateOrder(orderModel);
-            //[{"orderInvoiceId":"720322","orderInvoiceDetailId":"720856","shipperBranchCode":"03401700"}]
-            //Dönüş Değeri Update
+
+            //MNG API Response --> [{"orderInvoiceId":"720322","orderInvoiceDetailId":"720856","shipperBranchCode":"03401700"}]
+            //Dönüş Değeri Update edilebilir
             if (apiResponse.Success)
             {
                 var responseModel = apiResponse.response.Repsonse;
                 _cookieHelper.RemoveCookie(orderCookieName);
+                orderInfoDto.PaymentState= orderInfoDto.PaymentType =="1" ? PaymentState.ToDo : PaymentState.NotPayment;
                 return View("/Views/Content/OrderDetail.cshtml", orderInfoDto);
             }
             else
@@ -214,15 +216,5 @@ namespace Photocopy.Controllers
             }
         }
 
-        #region kullanılmıyor
-
-        //[HttpPost]
-        //[Route("SiparisDurumu")]
-        //public string GetOrderStatus(string siparisNo, string telefon)
-        //{
-        //    string status = _service.GetOrderStatus(siparisNo, telefon);
-        //    return status;
-        //} 
-        #endregion
     }
 }

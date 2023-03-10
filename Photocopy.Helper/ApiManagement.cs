@@ -1,4 +1,6 @@
-﻿using Photocopy.Entities.Model;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+using Photocopy.Entities.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,31 +15,29 @@ namespace Photocopy.Helper
 {
     public interface IHttpClientExtensions
     {
-
         ApiResponse GetTokenAsync();
         ApiResponse CreateOrder(MngOrder orderModel);
         ApiResponse GetCities();
-
         ApiResponse GetDistrict(string cityCode);
-
     }
 
     public class TokenModel
     {
-
         public string customerNumber { get; set; }
         public string password { get; set; }
         public int identityType { get; set; }
-
     }
+
 
     public class HttpClientExtensions : IHttpClientExtensions
     {
         private readonly IHttpClientFactory factory;
+        private readonly Apimodel _configuration;
 
-        public HttpClientExtensions(IHttpClientFactory factory)
+        public HttpClientExtensions(IHttpClientFactory factory, IOptions<Apimodel> configuration)
         {
             this.factory = factory;
+            this._configuration = configuration.Value;
         }
 
 
@@ -52,13 +52,13 @@ namespace Photocopy.Helper
 
                     //client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    client.DefaultRequestHeaders.Add("X-IBM-Client-Id", "92c21416-8b6c-49ff-b248-4c63395515d3");
-                    client.DefaultRequestHeaders.Add("X-IBM-Client-Secret", "eA1fN7tR2tB2jQ2cV6bE5yG1hU4vB5sC5wP7tX6sF1iU5fQ6iU");
+                    client.DefaultRequestHeaders.Add("X-IBM-Client-Id", _configuration.XIBMClientId/* "92c21416-8b6c-49ff-b248-4c63395515d3"*/);
+                    client.DefaultRequestHeaders.Add("X-IBM-Client-Secret", _configuration.XIBMClientSecret/* "eA1fN7tR2tB2jQ2cV6bE5yG1hU4vB5sC5wP7tX6sF1iU5fQ6iU"*/);
                     client.DefaultRequestHeaders.Add("x-api-version", "");
 
                     TokenModel tokenModel = new TokenModel();
-                    tokenModel.customerNumber = "35615719";
-                    tokenModel.password = "4440606Mng.";
+                    tokenModel.customerNumber = _configuration.Username /*"35615719"*/;
+                    tokenModel.password = _configuration.Password /* "4440606Mng."*/;
                     tokenModel.identityType = 1;
 
                     var myContent = JsonHelper.Serialize(tokenModel);
@@ -100,8 +100,8 @@ namespace Photocopy.Helper
 
                     client.BaseAddress = new Uri("https://testapi.mngkargo.com.tr/");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    client.DefaultRequestHeaders.Add("X-IBM-Client-Id", "92c21416-8b6c-49ff-b248-4c63395515d3");
-                    client.DefaultRequestHeaders.Add("X-IBM-Client-Secret", "eA1fN7tR2tB2jQ2cV6bE5yG1hU4vB5sC5wP7tX6sF1iU5fQ6iU");
+                    client.DefaultRequestHeaders.Add("X-IBM-Client-Id", _configuration.XIBMClientId/* "92c21416-8b6c-49ff-b248-4c63395515d3"*/);
+                    client.DefaultRequestHeaders.Add("X-IBM-Client-Secret", _configuration.XIBMClientSecret/* "eA1fN7tR2tB2jQ2cV6bE5yG1hU4vB5sC5wP7tX6sF1iU5fQ6iU"*/);
                     client.DefaultRequestHeaders.Add("x-api-version", "");
                     client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token.jwt);
 
@@ -197,8 +197,8 @@ namespace Photocopy.Helper
 
                     //client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    client.DefaultRequestHeaders.Add("X-IBM-Client-Id", "92c21416-8b6c-49ff-b248-4c63395515d3");
-                    client.DefaultRequestHeaders.Add("X-IBM-Client-Secret", "eA1fN7tR2tB2jQ2cV6bE5yG1hU4vB5sC5wP7tX6sF1iU5fQ6iU");
+                    client.DefaultRequestHeaders.Add("X-IBM-Client-Id", _configuration.XIBMClientId/* "92c21416-8b6c-49ff-b248-4c63395515d3"*/);
+                    client.DefaultRequestHeaders.Add("X-IBM-Client-Secret", _configuration.XIBMClientSecret/* "eA1fN7tR2tB2jQ2cV6bE5yG1hU4vB5sC5wP7tX6sF1iU5fQ6iU"*/);
                     client.DefaultRequestHeaders.Add("x-api-version", "");
                     client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token.jwt);
 
@@ -241,8 +241,8 @@ namespace Photocopy.Helper
 
                     //client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
                     client.DefaultRequestHeaders.Add("Accept", "application/json");
-                    client.DefaultRequestHeaders.Add("X-IBM-Client-Id", "92c21416-8b6c-49ff-b248-4c63395515d3");
-                    client.DefaultRequestHeaders.Add("X-IBM-Client-Secret", "eA1fN7tR2tB2jQ2cV6bE5yG1hU4vB5sC5wP7tX6sF1iU5fQ6iU");
+                    client.DefaultRequestHeaders.Add("X-IBM-Client-Id", _configuration.XIBMClientId/* "92c21416-8b6c-49ff-b248-4c63395515d3"*/);
+                    client.DefaultRequestHeaders.Add("X-IBM-Client-Secret", _configuration.XIBMClientSecret/* "eA1fN7tR2tB2jQ2cV6bE5yG1hU4vB5sC5wP7tX6sF1iU5fQ6iU"*/);
                     client.DefaultRequestHeaders.Add("x-api-version", "");
                     client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token.jwt);
 

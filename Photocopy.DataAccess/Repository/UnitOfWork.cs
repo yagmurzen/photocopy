@@ -28,6 +28,7 @@ namespace Photocopy.DataAccess.Repository
 
         private BasketRepository _basketRepository;
         private BasketDetailRepository _basketDetailRepository;
+        private ContactRepository _contactRepository;
 
         public UnitOfWork(ApplicationContext context)
         {
@@ -55,6 +56,7 @@ namespace Photocopy.DataAccess.Repository
         public IBasketRepository Baskets => _basketRepository = _basketRepository ?? new BasketRepository(_context);
 
         public IBasketDetailRepository BasketDetails => _basketDetailRepository = _basketDetailRepository ?? new BasketDetailRepository(_context);
+        public IContactRepository Contacts => _contactRepository = _contactRepository ?? new ContactRepository(_context);
 
 
         public async Task<int> CommitAsync()

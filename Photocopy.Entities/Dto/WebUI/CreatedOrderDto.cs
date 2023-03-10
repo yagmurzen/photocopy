@@ -32,8 +32,8 @@ namespace Photocopy.Entities.Dto.WebUI
         public int? Id { get; set; }
         public int CustomerId { get; set; }
         public string Address { get; set; }
-        public string CityCode { get; set; }
-        public string DistrictCode { get; set; }
+        public string CityId { get; set; }
+        public string DistrictId { get; set; }
 
 
     }

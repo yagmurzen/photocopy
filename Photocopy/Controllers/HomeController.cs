@@ -29,10 +29,7 @@ namespace Photocopy.Controllers
 
         public IActionResult Index()
         {
-            //_ext.Get("");
-
-            return View();
-           
+            return View();           
         }
 
         public IActionResult Privacy()

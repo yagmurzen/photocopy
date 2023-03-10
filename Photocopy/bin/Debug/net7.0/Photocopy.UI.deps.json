@@ -8,9 +8,9 @@
     ".NETCoreApp,Version=v7.0": {
       "Photocopy.UI/1.0.0": {
         "dependencies": {
+          "IPara.DeveloperPortal.Core": "1.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "7.0.2",
           "Photocopy.Core": "1.0.0",
-          "Photocopy.DataAccess": "1.0.0",
           "Photocopy.Helper": "1.0.0",
           "Photocopy.Service": "1.0.0"
         },
@@ -1004,6 +1004,12 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions": "7.0.0",
           "Microsoft.Extensions.Logging.Abstractions": "7.0.0",
           "Microsoft.Extensions.Options": "7.0.0",
+          "Microsoft.Extensions.Primitives": "7.0.0"
+        }
+      },
+      "Microsoft.Extensions.Configuration/7.0.0": {
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "7.0.0",
           "Microsoft.Extensions.Primitives": "7.0.0"
         }
       },
@@ -2280,6 +2286,14 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
+      "IPara.DeveloperPortal.Core/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.1"
+        },
+        "runtime": {
+          "IPara.DeveloperPortal.Core.dll": {}
+        }
+      },
       "Photocopy.Core/1.0.0": {
         "dependencies": {
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "12.0.0",
@@ -2311,9 +2325,9 @@
         "dependencies": {
           "Microsoft.AspNetCore.DataProtection.Abstractions": "7.0.2",
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+          "Microsoft.Extensions.Configuration": "7.0.0",
           "Microsoft.Extensions.Http": "7.0.0",
-          "Photocopy.Core": "1.0.0",
-          "Photocopy.DataAccess": "1.0.0"
+          "Photocopy.Core": "1.0.0"
         },
         "runtime": {
           "Photocopy.Helper.dll": {}
@@ -2615,6 +2629,13 @@
       "sha512": "sha512-xpidBs2KCE2gw1JrD0quHE72kvCaI3xFql5/Peb2GRtUuZX+dYPoK/NTdVMiM67Svym0M0Df9A3xyU0FbMQhHw==",
       "path": "microsoft.extensions.caching.memory/7.0.0",
       "hashPath": "microsoft.extensions.caching.memory.7.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration/7.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tldQUBWt/xeH2K7/hMPPo5g8zuLc3Ro9I5d4o/XrxvxOCA2EZBtW7bCHHTc49fcBtvB8tLAb/Qsmfrq+2SJ4vA==",
+      "path": "microsoft.extensions.configuration/7.0.0",
+      "hashPath": "microsoft.extensions.configuration.7.0.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Configuration.Abstractions/7.0.0": {
       "type": "package",
@@ -3602,6 +3623,11 @@
       "sha512": "sha512-5zJ0XDxAIg8iy+t4aMnQAu0MqVbqyvfoUVl1yDV61xdo3Vth45oA2FoY4pPkxYAH5f8ixpmTqXeEIya95x0aCQ==",
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
+    },
+    "IPara.DeveloperPortal.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Photocopy.Core/1.0.0": {
       "type": "project",

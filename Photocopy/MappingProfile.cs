@@ -38,5 +38,9 @@ public class MappingProfile : Profile
 
         CreateMap<District, DistrictDto>();
         CreateMap<DistrictDto, District>();
+
+
+        CreateMap<Contact, ContactDto>();
+        CreateMap<ContactDto, Contact>();
     }
 }

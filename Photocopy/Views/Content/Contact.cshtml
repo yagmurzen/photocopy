@@ -8,18 +8,22 @@
         <h1>İletişim Formu</h1>
         <section id="iletisim-form">
             <div class="wrapper">
-                @using (Html.BeginForm("SendEmail", "Content", FormMethod.Post, new { autocomplete = "off", id = "iletisim-form" }))
-                {
+
+                @*@using (Html.BeginRouteForm("sendmail", FormMethod.Post, new { autocomplete = "off", id = "iletisim-form" }))
+                {*@
+                <form autocomplete="off" id="frm-contact">
                     <input type="text" placeholder="Ad Soyad" name="Fullname" />
                     <div>
                         <input type="mail" id="iletisim-mail-input" placeholder="E-mail" name="Email" />
                         <span class="error" id="mail-error">Lütfen geçerli bir e-mail adresi girin.</span>
                     </div>
 
-                    <input type="text" placeholder="Telefon" name="Phone" />
+                    <input type="text" placeholder="Telefon" name="PhoneNumber" />
                     <textarea rows="3" placeholder="Mesajınız" name="Message"></textarea>
-                    <button type="submit">GÖNDER</button>
-                }
+                    <button type="button">GÖNDER</button>
+                </form>
+
+                @*}*@
             </div>
         </section>
     </div>

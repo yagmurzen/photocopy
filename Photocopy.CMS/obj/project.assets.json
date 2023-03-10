@@ -361,6 +361,26 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
+      "Microsoft.Extensions.Configuration/7.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Extensions.Configuration.Abstractions": "7.0.0",
+          "Microsoft.Extensions.Primitives": "7.0.0"
+        },
+        "compile": {
+          "lib/net7.0/Microsoft.Extensions.Configuration.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net7.0/Microsoft.Extensions.Configuration.dll": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "buildTransitive/net6.0/_._": {}
+        }
+      },
       "Microsoft.Extensions.Configuration.Abstractions/7.0.0": {
         "type": "package",
         "dependencies": {
@@ -1314,9 +1334,9 @@
         "dependencies": {
           "Microsoft.AspNetCore.DataProtection.Abstractions": "7.0.2",
           "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+          "Microsoft.Extensions.Configuration": "7.0.0",
           "Microsoft.Extensions.Http": "7.0.0",
-          "Photocopy.Core": "1.0.0",
-          "Photocopy.DataAccess": "1.0.0"
+          "Photocopy.Core": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Photocopy.Helper.dll": {}
@@ -1786,6 +1806,33 @@
         "lib/netstandard2.0/Microsoft.Extensions.Caching.Memory.xml",
         "microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
         "microsoft.extensions.caching.memory.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
+    "Microsoft.Extensions.Configuration/7.0.0": {
+      "sha512": "tldQUBWt/xeH2K7/hMPPo5g8zuLc3Ro9I5d4o/XrxvxOCA2EZBtW7bCHHTc49fcBtvB8tLAb/Qsmfrq+2SJ4vA==",
+      "type": "package",
+      "path": "microsoft.extensions.configuration/7.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "buildTransitive/net461/Microsoft.Extensions.Configuration.targets",
+        "buildTransitive/net462/_._",
+        "buildTransitive/net6.0/_._",
+        "buildTransitive/netcoreapp2.0/Microsoft.Extensions.Configuration.targets",
+        "lib/net462/Microsoft.Extensions.Configuration.dll",
+        "lib/net462/Microsoft.Extensions.Configuration.xml",
+        "lib/net6.0/Microsoft.Extensions.Configuration.dll",
+        "lib/net6.0/Microsoft.Extensions.Configuration.xml",
+        "lib/net7.0/Microsoft.Extensions.Configuration.dll",
+        "lib/net7.0/Microsoft.Extensions.Configuration.xml",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.dll",
+        "lib/netstandard2.0/Microsoft.Extensions.Configuration.xml",
+        "microsoft.extensions.configuration.7.0.0.nupkg.sha512",
+        "microsoft.extensions.configuration.nuspec",
         "useSharedDesignerContext.txt"
       ]
     },
@@ -3820,7 +3867,6 @@
       "Microsoft.EntityFrameworkCore.Design >= 7.0.1",
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.2",
       "Photocopy.Core >= 1.0.0",
-      "Photocopy.DataAccess >= 1.0.0",
       "Photocopy.Entities >= 1.0.0",
       "Photocopy.Helper >= 1.0.0",
       "Photocopy.Service >= 1.0.0",
@@ -3856,9 +3902,6 @@
           "projectReferences": {
             "C:\\Users\\LENOVO\\source\\repos\\Photocopy.UI\\Photocopy.Core\\Photocopy.Core.csproj": {
               "projectPath": "C:\\Users\\LENOVO\\source\\repos\\Photocopy.UI\\Photocopy.Core\\Photocopy.Core.csproj"
-            },
-            "C:\\Users\\LENOVO\\source\\repos\\Photocopy.UI\\Photocopy.DataAccess\\Photocopy.DataAccess.csproj": {
-              "projectPath": "C:\\Users\\LENOVO\\source\\repos\\Photocopy.UI\\Photocopy.DataAccess\\Photocopy.DataAccess.csproj"
             },
             "C:\\Users\\LENOVO\\source\\repos\\Photocopy.UI\\Photocopy.Entities\\Photocopy.Entities.csproj": {
               "projectPath": "C:\\Users\\LENOVO\\source\\repos\\Photocopy.UI\\Photocopy.Entities\\Photocopy.Entities.csproj"

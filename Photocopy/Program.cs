@@ -5,6 +5,7 @@ using Photocopy.Core.Interface.Helper;
 using Photocopy.Core.Interface.Repository;
 using Photocopy.Core.Interface.Services;
 using Photocopy.DataAccess.Repository;
+using Photocopy.Entities.Model;
 using Photocopy.Helper;
 using Photocopy.Service.Services;
 using Photocopy.Service.Services.WebUI;
@@ -16,6 +17,7 @@ builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServe
 
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddHttpClient();
+builder.Services.Configure<Apimodel>(builder.Configuration.GetSection("Apimodel"));
 
 builder.Services.Configure<CookiePolicyOptions>(options =>
 {
@@ -54,6 +56,8 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<ICookieHelper, CookieHelper>();
 
 builder.Services.AddScoped<ICryptoHelper, CryptoHelper>();
+builder.Services.AddScoped<IEmailHelper, EmailHelper>();
+
 builder.Services.AddScoped<IHttpClientExtensions, HttpClientExtensions>();
 
 // Add services to the container.

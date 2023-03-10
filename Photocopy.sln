@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Photocopy.Service", "Photoc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Photocopy.Helper", "Photocopy.Helper\Photocopy.Helper.csproj", "{D8DABA6B-CCE4-4CC5-8830-B19FA17440D6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPara.DeveloperPortal.Core", "IPara.DeveloperPortal.Core\IPara.DeveloperPortal.Core.csproj", "{EBDB4B36-DDCD-4D77-BFC6-6DEE2F66CFB5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{D8DABA6B-CCE4-4CC5-8830-B19FA17440D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D8DABA6B-CCE4-4CC5-8830-B19FA17440D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D8DABA6B-CCE4-4CC5-8830-B19FA17440D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBDB4B36-DDCD-4D77-BFC6-6DEE2F66CFB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBDB4B36-DDCD-4D77-BFC6-6DEE2F66CFB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBDB4B36-DDCD-4D77-BFC6-6DEE2F66CFB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBDB4B36-DDCD-4D77-BFC6-6DEE2F66CFB5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

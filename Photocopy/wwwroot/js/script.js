@@ -148,7 +148,7 @@ menuCollapseBtn.onclick = () => {
 var swiper = new Swiper(".mySwiper", { spaceBetween: 10 });
 
 // İletişim Form
-let iletisimForm = document.getElementById("iletisim-form");
+let iletisimForm = document.getElementById("frm-contact");
 let iletisimMailInput = document.getElementById("iletisim-mail-input");
 let mailError = document.getElementById("mail-error");
 
@@ -167,11 +167,24 @@ if (iletisimForm) {
 
 		if (!validateEmail(iletisimMailInput.value)) {
 			iletisimMailInput.classList.add("invalid");
-			mailError.style.display = "block";
+			mailError.style.display = "block";		
 		}
 	});
 	iletisimMailInput.addEventListener("focus", () => {
 		iletisimMailInput.classList.remove("invalid");
 		mailError.style.display = "none";
+	});
+
+	$("#frm-contact button").click(function (e) {
+		var form = $("#frm-contact");
+
+		$.ajax({
+			type: "POST",
+			url: "SendContactMail",
+			data: form.serialize(),
+			success: function (data) {
+				alert("Bilgileriniz Alınmıştır.");
+			}
+		});
 	});
 }

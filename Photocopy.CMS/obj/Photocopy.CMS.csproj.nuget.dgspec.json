@@ -31,9 +31,6 @@
               "C:\\Users\\LENOVO\\source\\repos\\Photocopy.UI\\Photocopy.Core\\Photocopy.Core.csproj": {
                 "projectPath": "C:\\Users\\LENOVO\\source\\repos\\Photocopy.UI\\Photocopy.Core\\Photocopy.Core.csproj"
               },
-              "C:\\Users\\LENOVO\\source\\repos\\Photocopy.UI\\Photocopy.DataAccess\\Photocopy.DataAccess.csproj": {
-                "projectPath": "C:\\Users\\LENOVO\\source\\repos\\Photocopy.UI\\Photocopy.DataAccess\\Photocopy.DataAccess.csproj"
-              },
               "C:\\Users\\LENOVO\\source\\repos\\Photocopy.UI\\Photocopy.Entities\\Photocopy.Entities.csproj": {
                 "projectPath": "C:\\Users\\LENOVO\\source\\repos\\Photocopy.UI\\Photocopy.Entities\\Photocopy.Entities.csproj"
               },
@@ -325,9 +322,6 @@
             "projectReferences": {
               "C:\\Users\\LENOVO\\source\\repos\\Photocopy.UI\\Photocopy.Core\\Photocopy.Core.csproj": {
                 "projectPath": "C:\\Users\\LENOVO\\source\\repos\\Photocopy.UI\\Photocopy.Core\\Photocopy.Core.csproj"
-              },
-              "C:\\Users\\LENOVO\\source\\repos\\Photocopy.UI\\Photocopy.DataAccess\\Photocopy.DataAccess.csproj": {
-                "projectPath": "C:\\Users\\LENOVO\\source\\repos\\Photocopy.UI\\Photocopy.DataAccess\\Photocopy.DataAccess.csproj"
               }
             }
           }
@@ -349,6 +343,10 @@
             "Microsoft.AspNetCore.Http.Abstractions": {
               "target": "Package",
               "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             },
             "Microsoft.Extensions.Http": {
               "target": "Package",

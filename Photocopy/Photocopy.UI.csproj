@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\IPara.DeveloperPortal.Core\IPara.DeveloperPortal.Core.csproj" />
     <ProjectReference Include="..\Photocopy.Core\Photocopy.Core.csproj" />
-    <ProjectReference Include="..\Photocopy.DataAccess\Photocopy.DataAccess.csproj" />
     <ProjectReference Include="..\Photocopy.Helper\Photocopy.Helper.csproj" />
     <ProjectReference Include="..\Photocopy.Service\Photocopy.Service.csproj" />
   </ItemGroup>

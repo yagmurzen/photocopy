@@ -82,7 +82,13 @@ namespace Photocopy.Service.Services
 			IList<DistrictDto> outModel = _mapper.Map<IList<DistrictDto>>(list);
 
 			return outModel;
-		} 
-		#endregion
-	}
+		}
+
+        public async Task AddContactAsync(ContactDto contactDto)
+        {
+			var list = _unitOfWork.Contacts.AddAsync(_mapper.Map<Contact>(contactDto));
+            await _unitOfWork.CommitAsync();
+        }
+        #endregion
+    }
 }

@@ -18,6 +18,7 @@ namespace Photocopy.Core.Interface.Services
         BlogListDetailDto GetBlogDetail(string slug);
         IList<CityDto> GetAllCity();
         IList<DistrictDto> GetAllDisctirtById(string cityId);
+        Task AddContactAsync(ContactDto contactDto);
 
     }
 }

@@ -11,6 +11,8 @@ namespace Photocopy.Entities.Domain
         public Guid Id { get; set; }
         public string FilePath { get; set; }
         public int IsDeleted { get; set; }
+        public DateTime CreatedAt { get; set; }
+
         public virtual OrderDetail OrderDetail { get; set; }
         public virtual BasketDetail BasketDetail { get; set; }
 
