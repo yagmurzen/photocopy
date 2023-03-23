@@ -60,6 +60,12 @@ namespace Photocopy.Controllers
             return View("/Views/Content/OrderDetail.cshtml", orderInfoDto);
         }
 
+        [Route("odeme-sayfasi")]
+        public IActionResult PaymentPage()
+        {
+            return View("/Views/Payment/Index.cshtml");
+        }
+
         [HttpPost]
         [Route("payment")]
         public ActionResult OrderDetail(string nameSurname, string cardNumber, string cvc, string month, string year, string amount, string installment)
@@ -68,7 +74,7 @@ namespace Photocopy.Controllers
             {
                 PublicKey = _configuration.Ipara.PublicKey,//"8AWVLX6N3WJ0EYP", //"Public Magaza Anahtarı - size mağaza başvurunuz sonucunda gönderilen publik key (açık anahtar) bilgisini kullanınız.",
 
-                PrivateKey = _configuration.Ipara.PublicKey.ToString(),// "4NFUOHFTXFAHRANIE0W0YK601", //"Private Magaza Anahtarı  - size mağaza başvurunuz sonucunda gönderilen privaye key (gizli anahtar) bilgisini kullanınız.",
+                PrivateKey = _configuration.Ipara.PrivateKey.ToString(),// "4NFUOHFTXFAHRANIE0W0YK601", //"Private Magaza Anahtarı  - size mağaza başvurunuz sonucunda gönderilen privaye key (gizli anahtar) bilgisini kullanınız.",
 
                 BaseUrl = _configuration.Ipara.BaseUrl,// "https://api.ipara.com/", //iPara web servisleri API url'lerinin başlangıç bilgisidir. Restful web servis isteklerini takip eden kodlar halinde bulacaksınız. Örneğin "https://api.ipara.com/" + "/rest/payment/auth"  = "https://api.ipara.com/rest/payment/auth"
 

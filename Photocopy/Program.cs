@@ -18,6 +18,8 @@ builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlServe
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddHttpClient();
 builder.Services.Configure<Apimodel>(builder.Configuration.GetSection("Apimodel"));
+builder.Services.Configure<PaymentModel>(builder.Configuration.GetSection("PaymentModel"));
+
 
 builder.Services.Configure<CookiePolicyOptions>(options =>
 {
