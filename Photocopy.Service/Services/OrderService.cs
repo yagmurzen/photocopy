@@ -247,11 +247,23 @@ namespace Photocopy.Service.Services
             order.OrderStateId = orderInfoDto.OrderStateId;
             order.PaymentState = (PaymentState)orderInfoDto.PaymentState;
             order.TransactionDate =  DateTime.Now;
+            order.OrderInvoiceId = orderInfoDto.OrderInvoiceId;
+            order.OrderInvoiceDetailId = orderInfoDto.OrderInvoiceDetailId;
+            order.ShipperBranchCode = orderInfoDto.ShipperBranchCode;
 
             await _unitOfWork.Orders.Update(order);
             await _unitOfWork.CommitAsync();
         }
+        public async Task SetOrderComplated(OrderListDto orderInfoDto)
+        {
+            Order order = _unitOfWork.Orders.Find(x => x.Id == orderInfoDto.Id).FirstOrDefault() ?? new Order();
+            order.OrderStateId = orderInfoDto.OrderStateId;
+            order.PaymentState = (PaymentState)orderInfoDto.PaymentState;
+            order.TransactionDate = DateTime.Now;
 
+            await _unitOfWork.Orders.Update(order);
+            await _unitOfWork.CommitAsync();
+        }
 
         public async Task SetLookupPrice(SetLookupPriceCmsDto  lookupPriceCmsDto)
         {

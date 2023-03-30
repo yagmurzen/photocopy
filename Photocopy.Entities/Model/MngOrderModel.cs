@@ -68,12 +68,12 @@ namespace Photocopy.Entities.Model
         public string content { get; set; }
     }
 
-    public class Rootobject
+    public class MngOrderModel
     {
-        public MngOrderModel[] Property1 { get; set; }
+        public MngOrdertDetail MngOrdertDetail { get; set; }
     }
 
-    public class MngOrderModel
+    public class MngOrdertDetail
     {
         public string orderInvoiceId { get; set; }
         public string orderInvoiceDetailId { get; set; }

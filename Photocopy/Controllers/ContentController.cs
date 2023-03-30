@@ -11,6 +11,7 @@ using Photocopy.Core.Interface.Services;
 using Photocopy.Entities.Dto;
 using Photocopy.Entities.Dto.WebUI;
 using Photocopy.Entities.Model;
+using Photocopy.Helper;
 using Photocopy.Models;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -49,7 +50,8 @@ namespace Photocopy.Controllers
 		[Route("sepet")]
 		public IActionResult OrderBox()
 		{
-			return View();
+         
+            return View();
 		}
 		[Route("siparis-detay")]
         [HttpPost]
@@ -61,14 +63,14 @@ namespace Photocopy.Controllers
         }
 
         [Route("odeme-sayfasi")]
-        public IActionResult PaymentPage()
+        public IActionResult PaymentPage(decimal price,int id)
         {
-            return View("/Views/Payment/Index.cshtml");
+            return View("/Views/Payment/Index.cshtml",new OrderListDto {TotalPrice= price, Id=id });
         }
 
         [HttpPost]
         [Route("payment")]
-        public ActionResult OrderDetail(string nameSurname, string cardNumber, string cvc, string month, string year, string amount, string installment)
+        public ActionResult OrderDetail(int id, string nameSurname, string cardNumber, string cvc, string month, string year, string amount, string installment)
         {
             Settings settings = new()
             {
@@ -129,6 +131,18 @@ namespace Photocopy.Controllers
 
             string threeDform = ThreeDPaymentRequest.Execute(request, settings);
             HttpResponseWritingExtensions.WriteAsync(this.Response, threeDform);
+            #region Paymnet Done Response
+            if (true)
+            {
+                OrderListDto order = new OrderListDto();
+
+                order.Id = id;
+                order.PaymentState = 1;
+                order.TransactionDate = DateTime.Now;
+
+                _service.SetOrderDetail(order);
+            }
+            #endregion
             return View();
         }
 

@@ -212,6 +212,10 @@ namespace Photocopy.Core.AppContext
                 entity.HasOne(ur => ur.Customer).WithMany(u => u.Orders).HasForeignKey(ur => ur.CustomerId);
                 entity.Property(x => x.IsDeleted).HasDefaultValue(false);
                 entity.Property(x => x.CreatedAt).HasDefaultValue(DateTime.Now.Date);
+                entity.Property(x => x.OrderInvoiceDetailId).IsRequired(false);
+                entity.Property(x => x.OrderInvoiceId).IsRequired(false);
+                entity.Property(x => x.ShipperBranchCode).IsRequired(false);
+
             });
             modelBuilder.Entity<OrderDetail>(entity =>
             {

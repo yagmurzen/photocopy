@@ -22,6 +22,9 @@ namespace Photocopy.Entities.Dto
         public IList<OrderDetailDto> OrderDetails { get; set; }
         public int OrderStateId { get; set; }
         public virtual OrderStateItemDto OrderState { get; set; }
+        public string OrderInvoiceId { get; set; }
+        public string OrderInvoiceDetailId { get; set; }
+        public string ShipperBranchCode { get; set; }
     }
 
     public class OrderDetailDto

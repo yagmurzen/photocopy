@@ -18,15 +18,15 @@ namespace Photocopy.Entities.Domain
         public decimal TotalPrice { get; set; }
         public int CargoCompanyId { get; set; }
         public virtual CargoFirm CargoCompany { get; set; }
-
         public int PaymentType { get; set; }   
         public string Notes { get; set; }
-
         public DateTime? TransactionDate { get; set; }
         public int OrderStateId { get; set; }
         public virtual OrderState OrderState { get; set; }
-
         public PaymentState PaymentState { get; set; }
+        public string OrderInvoiceId { get; set; }
+        public string OrderInvoiceDetailId { get; set; }
+        public string ShipperBranchCode { get; set; }
 
 
     }

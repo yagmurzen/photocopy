@@ -5,6 +5,7 @@ using Photocopy.Core.Interface.Helper;
 using Photocopy.Core.Interface.Repository;
 using Photocopy.Core.Interface.Services;
 using Photocopy.Entities.Domain;
+using Photocopy.Entities.Dto;
 using Photocopy.Entities.Dto.WebUI;
 using Photocopy.Entities.Model;
 using Photocopy.Helper;
@@ -38,6 +39,8 @@ namespace Photocopy.Controllers
         //Sepet Açılınca Şifrelenmiş Cookie kontrol edilir. Boş değilse Şifre çözülerek Data ekrana getirilir.
         public IActionResult Index()
         {
+
+
             var cookie = _cookieHelper.GetCookie(orderCookieName);
 
             if (cookie == null) return View("/Views/Basket/Index.cshtml");
@@ -48,10 +51,10 @@ namespace Photocopy.Controllers
         //Ürün Ekleme --> Dosya Yükleme ile başlar. Dosya Database Base64 formatında yüklenerek Dönüş id değeri sepet içerisinde kullanılır.
         [Route("DosyaYukle")]
         [HttpPost]
-        public UploadDataDto UploadData(IFormFile File)
+        public Entities.Dto.WebUI.UploadDataDto UploadData(IFormFile File)
         {
-            Guid id =_service.UploadDataAsync(new UploadDataDto { FileData = ConverterHelper.Base64ToImage(File), FileName = File.FileName }).Result;
-            return new UploadDataDto { Id = id, FileName = File.FileName };
+            Guid id =_service.UploadDataAsync(new Entities.Dto.WebUI.UploadDataDto { FileData = ConverterHelper.Base64ToImage(File), FileName = File.FileName }).Result;
+            return new Entities.Dto.WebUI.UploadDataDto { Id = id, FileName = File.FileName };
         }
                
         //Eklenen Dosya ile birlikte Özellikler Girilerek otomatik hesaplama yapılır. Buradaki Hesaplama Parametreleri db'de tutulmaktadır.
@@ -108,6 +111,7 @@ namespace Photocopy.Controllers
 
             if (cookie == "") return View("/Views/Content/OrderBox.cshtml");
 
+            #region DB 
             int basketId = Convert.ToInt32(cookie);
 
             IList<BasketDetail> basketDetails = _unitOfWork.BasketDetails.GetAllBasketDetails(x => x.IsDeleted == false && x.BasketId == basketId).ToList();
@@ -137,18 +141,20 @@ namespace Photocopy.Controllers
             }
             model.OrderDetails = list;
 
-            CustomerDto customer=_service.CreateCustomerAsync(model.Customer).GetAwaiter().GetResult();
-            model.Customer.Address.CustomerId= customer.Id.Value;
+            Entities.Dto.WebUI.CustomerDto customer = _service.CreateCustomerAsync(model.Customer).GetAwaiter().GetResult();
+            model.Customer.Address.CustomerId = customer.Id.Value;
             _service.CreateCustomerAddressAsync(model.Customer.Address).GetAwaiter().GetResult();
 
             model.Customer.Id = customer.Id.Value;
-            CreatedOrderDto createdOrderDto=_service.CreateOrderAsync(model).GetAwaiter().GetResult();
+            CreatedOrderDto createdOrderDto = _service.CreateOrderAsync(model).GetAwaiter().GetResult();
 
-            model.Id= createdOrderDto.Id;
+            model.Id = createdOrderDto.Id;
             _service.CreateOrderDetailAsync(model).GetAwaiter().GetResult();
 
-            OrderInfoDto orderInfoDto = _service.GetOrderInfo(createdOrderDto.Id.Value);
-            
+            OrderInfoDto orderInfoDto = _service.GetOrderInfo(createdOrderDto.Id.Value); 
+            #endregion
+
+            #region Mng Model
             MngOrder orderModel = new MngOrder();
             orderModel.order = new Entities.Model.Order
             {
@@ -172,41 +178,68 @@ namespace Photocopy.Controllers
             };
             orderModel.recipient = new Recipient
             {
-                customerId =null, //??//*
+                customerId = null, //??//*
                 refCustomerId = "",
-                cityCode = Convert.ToInt32( model.Customer.Address.CityId),//*
+                cityCode = Convert.ToInt32(model.Customer.Address.CityId),//*
                 cityName = "",
                 districtName = "",
                 districtCode = Convert.ToInt32(model.Customer.Address.DistrictId),//*
                 address = model.Customer.Address.Address,//*
-                bussinessPhoneNumber ="",
+                bussinessPhoneNumber = "",
                 email = model.Customer.Email,//*
                 taxOffice = "",
                 taxNumber = "",
-                fullName = model.Customer.Name + " " +model.Customer.LastName,//*
+                fullName = model.Customer.Name + " " + model.Customer.LastName,//*
                 homePhoneNumber = "",
                 mobilePhoneNumber = model.Customer.PhoneNumber//*
             };
             orderModel.orderPieceList = new List<Orderpiecelist>();
             orderModel.orderPieceList.Add(new Orderpiecelist
             {
-                barcode = "SIPARIS"+ createdOrderDto.Id.ToString() + "_PARCA1",//*
+                barcode = "SIPARIS" + createdOrderDto.Id.ToString() + "_PARCA1",//*
                 desi = 0,
                 kg = 0,
                 content = "Parça açıklama 1"
 
             });
-                      
-           
-            var apiResponse = _httpClientExtensions.CreateOrder(orderModel);
+            #endregion
+
+            #region Mng API
+
+            var apiResponse = _httpClientExtensions.CreateOrder(orderModel); 
+
+            #endregion
 
             //MNG API Response --> [{"orderInvoiceId":"720322","orderInvoiceDetailId":"720856","shipperBranchCode":"03401700"}]
             //Dönüş Değeri Update edilebilir
             if (apiResponse.Success)
             {
-                var responseModel = apiResponse.response.Repsonse;
+
+                #region Mng Response
+                OrderListDto order = new OrderListDto();
+                IList<MngOrdertDetail> responseModel = JsonHelper.Deserialize<IList<MngOrdertDetail>>(apiResponse.response.Repsonse);
+
+                order.Id = orderInfoDto.OrderId;
+                if (responseModel.Count>0)
+                {
+                    order.OrderInvoiceId = responseModel[0].orderInvoiceId;
+                    order.OrderInvoiceDetailId = responseModel[0].orderInvoiceId;
+                    order.ShipperBranchCode = responseModel[0].orderInvoiceId;
+                }
+                order.TransactionDate = DateTime.Now;
+                _service.SetOrderDetail(order);
+                #endregion
+
+                #region Remove Cookie
+
                 _cookieHelper.RemoveCookie(orderCookieName);
-                orderInfoDto.PaymentState= orderInfoDto.PaymentType =="1" ? PaymentState.ToDo : PaymentState.NotPayment;
+                #endregion
+
+                #region Payment state
+
+                orderInfoDto.PaymentState = orderInfoDto.PaymentType == "1" ? PaymentState.ToDo : PaymentState.NotPayment; 
+                #endregion
+
                 return View("/Views/Content/OrderDetail.cshtml", orderInfoDto);
             }
             else
