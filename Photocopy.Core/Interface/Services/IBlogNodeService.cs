@@ -17,7 +17,7 @@ namespace Photocopy.Core.Interface.Services
         void DeleteBlogNode(int BlogNodeId);
         void DeleteBlogPage(int BlogPageId);
 
-        BlogNodeDto SaveOrUpdateBlogNode(BlogNodeDto BlogNode);
+        Task<BlogNodeDto> SaveOrUpdateBlogNodeAsync(BlogNodeDto BlogNode);
         Task<BlogPageDto> SaveOrUpdateBlogPageAsync(BlogPageDto BlogPage);
     }
 }

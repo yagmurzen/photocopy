@@ -248,15 +248,17 @@ C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\bin\Debug\net7.0\runtimes\wi
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\bin\Debug\net7.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\bin\Debug\net7.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\bin\Debug\net7.0\IPara.DeveloperPortal.Core.dll
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\bin\Debug\net7.0\Photocopy.Core.dll
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\bin\Debug\net7.0\Photocopy.DataAccess.dll
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\bin\Debug\net7.0\Photocopy.Entities.dll
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\bin\Debug\net7.0\Photocopy.Helper.dll
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\bin\Debug\net7.0\Photocopy.Service.dll
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\bin\Debug\net7.0\IPara.DeveloperPortal.Core.pdb
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\bin\Debug\net7.0\Photocopy.Core.pdb
-C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\bin\Debug\net7.0\Photocopy.DataAccess.pdb
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\bin\Debug\net7.0\Photocopy.Helper.pdb
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\bin\Debug\net7.0\Photocopy.Service.pdb
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\bin\Debug\net7.0\Photocopy.DataAccess.pdb
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\bin\Debug\net7.0\Photocopy.Entities.pdb
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\obj\Debug\net7.0\Photocopy.UI.csproj.AssemblyReference.cache
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\obj\Debug\net7.0\Photocopy.UI.GeneratedMSBuildEditorConfig.editorconfig
@@ -274,6 +276,9 @@ C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\obj\Debug\net7.0\staticwebas
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\obj\Debug\net7.0\staticwebassets.build.json
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\obj\Debug\net7.0\staticwebassets.development.json
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\obj\Debug\net7.0\scopedcss\Views\Shared\_LayoutCms.cshtml.rz.scp.css
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\obj\Debug\net7.0\scopedcss\Views\_CMS\Shared\_Layout - Copy.cshtml.rz.scp.css
+C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\obj\Debug\net7.0\scopedcss\Views\_CMS\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\obj\Debug\net7.0\scopedcss\bundle\Photocopy.UI.styles.css
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\obj\Debug\net7.0\scopedcss\projectbundle\Photocopy.UI.bundle.scp.css
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\obj\Debug\net7.0\Photocopy.UI.csproj.CopyComplete
@@ -282,5 +287,3 @@ C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\obj\Debug\net7.0\refint\Phot
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\obj\Debug\net7.0\Photocopy.UI.pdb
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\obj\Debug\net7.0\Photocopy.UI.genruntimeconfig.cache
 C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\obj\Debug\net7.0\ref\Photocopy.UI.dll
-C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\bin\Debug\net7.0\IPara.DeveloperPortal.Core.dll
-C:\Users\LENOVO\source\repos\Photocopy.UI\Photocopy\bin\Debug\net7.0\IPara.DeveloperPortal.Core.pdb

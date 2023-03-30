@@ -1,0 +1,214 @@
+﻿@model Photocopy.Entities.Dto.UserDto
+@{
+    ViewData["Title"] = "Kullanıcı Bilgileri";
+    Layout = "_LayoutCms";
+}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title">Kullanıcı @(Model.Id != null ? "Güncelle" : "Ekle")</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="/cms/kullanici-bilgileri" autocomplete="off">
+                            <input type="hidden" name="Id" value="@Model.Id" />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Kullanıcı Adı</label>
+                                        <input type="text" class="form-control" name="UserName" value="@Model.UserName" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Kullanıcı Ad/Soyad</label>
+                                        <input type="text" class="form-control" name="FullName" value="@Model.FullName" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Gsm</label>
+                                        <input type="tel" class="form-control" name="Gsm" value="@Model.Gsm" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Email Adres</label>
+                                        <input type="email" class="form-control" value="@Model.Email" name="Email" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Parola</label>
+                                        <input type="password" class="form-control" name="Password" value="@Model.Password" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="bmd-label-floating">Parola Tekrar</label>
+                                        <input type="password" class="form-control" value="@Model.Password" name="Password" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-info pull-right">@(Model.Id != null ? "Güncelle" : "Ekle")</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card card-profile">
+                    <div class="card-avatar">
+                        <a href="#pablo">
+                            <img class="img" src="~/cms/assets/img/apple-icon.png" />
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">@Model.FullName</h4>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        @if (Model.UserRoles != null)
+        {
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header card-header-info">
+                            <h4 class="card-title">Kullanıcı Rolü Ekle</h4>
+                        </div>
+                        <div class="card-body">
+                            <form method="post" action="/cms/kullanici-rol" autocomplete="off">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <input type="hidden" name="UserId" value="@Model.Id" />
+                                        <div class="form-group">
+                                            <label class="bmd-label-floating">Rol</label>
+                                            <select class="form-select custom-select" aria-label="Default select example" name="RoleId">
+                                                @if (Model.Roles != null)
+                                                {
+                                                    @foreach (var item in Model.Roles)
+                                                    {
+                                                        <option value="@item.Id">@item.Name</option>
+                                                    }
+                                                }
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button type="submit" class="btn btn-info pull-right">Rol Ekle</button>
+
+                                    </div>
+                                </div>
+
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        }
+
+        @if (Model.UserRoles != null)
+        {
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-special">
+                            <span class="card-title ">Kullanı Rolü</span>
+
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class=" text-info">
+                                    <th>
+                                        Rol
+                                    </th>
+
+                                    <th class="td-actions text-right">
+                                        İşlemler
+                                    </th>
+
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model.UserRoles)
+                                        {
+                                            <tr>
+                                                <td>@item.Name</td>
+
+                                                <td class="td-actions text-right">
+
+                                                    <form method="post">
+                                                        <button type="button" rel="tooltip" title="Rol sil" class="delete btn btn-warning btn-link btn-sm" data-userId="@Model.Id" data-roleId="@item.Id">
+                                                            <i class="material-icons">delete</i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+<!-- Modal Delete data-bs-toggle="modal" data-bs-target="#deleteModal"-->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/cms/DeleteUserRole" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sil</h5>
+                    <input type="hidden" id="roleId" name="roleId" value="" />
+                    <input type="hidden" id="userId" name="userId" value="" />
+
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Silmek İstediğinize Emin misiniz?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Vazgeç</button>
+                    <button type="submit" class="btn btn-primary">Sil</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section scripts
+    {
+    <script>
+        $('form .delete').click(function (e) {
+            e.preventDefault();
+
+            $("#roleId").val($(this).attr("data-roleId"));
+            $("#userId").val($(this).attr("data-userId"));
+
+
+            $('#deleteModal').modal({
+                show: true
+            });
+        });
+    </script>
+}

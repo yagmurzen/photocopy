@@ -47,12 +47,11 @@ namespace Photocopy.DataAccess.Repository
 			await Context.SaveChangesAsync();
 			return entity;
         }
-		public UserRole UpdateRole(UserRole entity)
-		{
-			Context.Attach(entity);
-			Context.Entry(entity).State = EntityState.Modified;
-			return entity;
-		}
-
+        public async Task<UserRole> UpdateRole(UserRole entity)
+        {
+            Context.Update(entity);
+            return entity;
+        }
+       
     }
 }

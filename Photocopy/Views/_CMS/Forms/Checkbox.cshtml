@@ -1,0 +1,12 @@
+﻿@model WebUI.Model.CheckboxDto
+
+
+<div class="form-check">
+    <label class="col-lg-3 control-label">@Model.Label</label>
+    <label class="form-check-label">
+        <input class="form-check-input" type="checkbox" value="" checked id="@Model.Name" name="@Model.Name" @(Model.IsChecked? "checked": "")>
+        <span class="form-check-sign">
+            <span class="check"></span>
+        </span>
+    </label>
+</div>

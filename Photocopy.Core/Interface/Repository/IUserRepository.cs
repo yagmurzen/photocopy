@@ -10,6 +10,6 @@ namespace Photocopy.Core.Interface.Repository
         IEnumerable<Role> FindRolesAsync(Expression<Func<Role, bool>> predicate);
         void Remove(UserRole entity);
         Task<UserRole> AddRoleAsync(UserRole entity);
-        UserRole UpdateRole(UserRole entity);
+        Task<UserRole> UpdateRole(UserRole entity);
     }
 }

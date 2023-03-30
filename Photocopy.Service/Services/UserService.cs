@@ -45,7 +45,7 @@ namespace Photocopy.Service.Services
                 UserName = user.UserName,
                 Email = user.Email,
                 Gsm = user.Gsm,
-                Password = _cryptoHelper.Decrypt(user.Password),
+                Password = _cryptoHelper.DecryptString(user.Password),
                 UserRoles = _mapper.Map<IList<RoleDto>>(roles),
                 Roles = _mapper.Map<IList<RoleDto>>(allRoles)
 
@@ -63,26 +63,38 @@ namespace Photocopy.Service.Services
 
         public async Task<UserDto> SaveOrUpdateAsync(UserDto user)
         {
-            user.Password = _cryptoHelper.Encrypt(user.Password);
+            user.Password = _cryptoHelper.EncryptString(user.Password);
             User userDbModel= _mapper.Map<User>(user);
             if (user.Id == 0)
-                _unitOfWork.Users.AddAsync(userDbModel);
+                await _unitOfWork.Users.AddAsync(userDbModel);
             else
-                _unitOfWork.Users.Update(userDbModel);
+                await _unitOfWork.Users.Update(userDbModel);
 
 			await _unitOfWork.CommitAsync();
 
 			return _mapper.Map<UserDto>(userDbModel);
         }
 
-        public void DeleteUser(int userId)
+        public async void DeleteUser(int userId)
         {
-            _unitOfWork.Users.Remove(new User { Id=userId});
+            User user = _unitOfWork.Users.GetByIdAsync(x => !x.IsDeleted && x.Id == userId);
+            user.IsDeleted = true;
+            await _unitOfWork.Users.Update(user);
+             _unitOfWork.CommitAsync();
+
         }
 
-        public void DeleteUserRole(int userId,int userRoleId)
+        public async void DeleteUserRoleAsync(int userId,int userRoleId)
         {
-            _unitOfWork.Users.Remove(new UserRole { RoleId = userRoleId,UserId=userId });
+            var userRole =  _unitOfWork.Users.FindUserRolesAsync(ur => ur.UserId == userId && !ur.IsDeleted && ur.RoleId == userRoleId).ToList().Take(1);
+            foreach (var item in userRole)
+            {
+                item.IsDeleted = true;
+                 await _unitOfWork.Users.UpdateRole(item);
+                _unitOfWork.CommitAsync();
+
+            }
+
         }
 
         public UserRoleDto AddRole(UserRoleDto userRole)
@@ -98,15 +110,19 @@ namespace Photocopy.Service.Services
             return _mapper.Map<UserRoleDto>(userDbModel);
         }
 
-        public UserDto GetUserByUsername(string username, string password)
+        public UserDto? GetUserByUsername(string username, string password)
         {
-           var  _password = _cryptoHelper.Encrypt(password);
-            User user = (User)_unitOfWork.Users.Find(x => x.UserName == username && !x.IsDeleted ).Take(1).SingleOrDefault();
-            var pass= _cryptoHelper.Decrypt(user.Password); 
-			if (pass==pass)
-            return GetUserById(user.Id);
+           var  _password = _cryptoHelper.EncryptString(password);
+            User? user = _unitOfWork.Users.Find(x => x.UserName == username && !x.IsDeleted ).Take(1).SingleOrDefault() as User;
+            if (user!=null)
+            {
+                var pass = _cryptoHelper.DecryptString(user.Password);
+                if (pass == pass)
+                    return GetUserById(user.Id);
+                return null;
+            }
 
-			return GetUserById(user.Id);
+            return null;
 		}
 	}
 }

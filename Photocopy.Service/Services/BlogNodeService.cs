@@ -8,9 +8,11 @@ using Photocopy.Entities.Domain.FixType;
 using Photocopy.Entities.Dto;
 using System;
 using System.Collections.Generic;
+using System.IO.Pipelines;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Photocopy.Service.Services
 {
@@ -40,7 +42,7 @@ namespace Photocopy.Service.Services
 
             if (node != null)
             {
-                IList<BlogPage> pages = _unitOfWork.Blogs.GetBlogPageByIdAsync(x => x.ContentNodeId == node.Id).ToList();
+                IList<BlogPage> pages = _unitOfWork.Blogs.GetBlogPageByIdAsync(x => x.ContentNodeId == node.Id && !x.IsDeleted).ToList();
                 //IList<Galery> galery = Db.Galeries.Where(x => x.BlogNodeId == node.Id).ToList();
 
                 outModel = new BlogNodeDto
@@ -56,22 +58,27 @@ namespace Photocopy.Service.Services
 
         }
 
-        public BlogNodeDto SaveOrUpdateBlogNode(BlogNodeDto BlogNode)
+        public async Task<BlogNodeDto> SaveOrUpdateBlogNodeAsync(BlogNodeDto BlogNode)
         {
             BlogNode nodeModel = _mapper.Map<BlogNode>(BlogNode);
             if (nodeModel.Id != 0)
-                _unitOfWork.Blogs.Update(nodeModel);
+                 _unitOfWork.Blogs.Update(nodeModel);
             else
                 _unitOfWork.Blogs.AddAsync(nodeModel);
 
-            _unitOfWork.CommitAsync();
+           await _unitOfWork.CommitAsync();
 
             return _mapper.Map<BlogNodeDto>(nodeModel);
         }
 
-        public void DeleteBlogNode(int BlogNodeId)
+        public async void DeleteBlogNode(int BlogNodeId)
         {
-            _unitOfWork.Blogs.Remove(new BlogNode { Id = BlogNodeId });
+            BlogNode node = _unitOfWork.Blogs.GetByIdAsync(x => x.ContentPageType == ContentPageType.Blog && x.Id == BlogNodeId && !x.IsDeleted);
+            node.IsDeleted = true;
+            await _unitOfWork.Blogs.Update(node);
+             _unitOfWork.CommitAsync();
+
+
         }
 
         public BlogPageDto GetBlogPageDetail(int BlogPageId)
@@ -98,9 +105,18 @@ namespace Photocopy.Service.Services
         }
 
 
-        public void DeleteBlogPage(int BlogPageId)
+        public async void DeleteBlogPage(int BlogPageId)
         {
-            _unitOfWork.Blogs.RemoveBlogPage(new BlogPage { Id = BlogPageId });
+            IList<BlogPage> page = _unitOfWork.Blogs.GetBlogPageByIdAsync(x => x.Id == BlogPageId && !x.IsDeleted).ToList();
+
+            foreach (var item in page)
+            {
+                item.IsDeleted = true;
+                await _unitOfWork.Blogs.UpdateBlogPage(item);
+                _unitOfWork.CommitAsync();
+
+            }
+           
         }
 
     }

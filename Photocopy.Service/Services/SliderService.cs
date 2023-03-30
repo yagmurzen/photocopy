@@ -25,7 +25,7 @@ namespace Photocopy.Service.Services
 
         public SliderDto GetSliderById(int sliderId)
         {
-            Slider slider = _unitOfWork.Sliders.Find(x => !x.IsDeleted && x.Id==sliderId).Single() ??  new Slider();
+            Slider slider = _unitOfWork.Sliders.Find(x => !x.IsDeleted && x.Id==sliderId).SingleOrDefault() ??  new Slider();
 
             SliderDto outModel = _mapper.Map<SliderDto>(slider);
 
@@ -53,9 +53,12 @@ namespace Photocopy.Service.Services
             return sliderlist;
         }
 
-        public void DeleteSlider(int sliderId)
+        public async void DeleteSlider(int sliderId)
         {
-            _unitOfWork.Sliders.Remove(new Slider { Id = sliderId });
+            Slider slider = _unitOfWork.Sliders.GetByIdAsync(x => !x.IsDeleted && x.Id == sliderId);
+            slider.IsDeleted = true;
+            await _unitOfWork.Sliders.Update(slider);
+            _unitOfWork.CommitAsync();
         }
     }
 }

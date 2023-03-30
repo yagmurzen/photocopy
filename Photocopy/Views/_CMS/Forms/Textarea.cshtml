@@ -1,0 +1,7 @@
+﻿@model WebUI.Model.TextboxDto
+<div class="form-group @Model.CssClass">
+    <label class="col-lg-3 control-label">@Model.Label</label>
+    <div class="col-lg-8">
+    <textarea rows="5" class="form-control" data-trigger="keyup" @(Model.MaxLength == 0 ? "" : "maxlength=" + Model.MaxLength ) id="@Model.Id" name="@Model.Name" placeholder="@Model.PlaceHolder">@Model.Value</textarea>
+    </div>
+</div>

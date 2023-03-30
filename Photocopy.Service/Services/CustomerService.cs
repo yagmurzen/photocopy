@@ -25,7 +25,7 @@ namespace Photocopy.Service.Services
 
         public CustomerDto GetCustomerById(int customerId)
         {
-            Customer customer = _unitOfWork.Customers.Find(x => x.Id == customerId && x.IsDeleted == false).Single() ?? new Customer();
+            Customer customer = _unitOfWork.Customers.Find(x => x.Id == customerId && x.IsDeleted == false).SingleOrDefault() ?? new Customer();
             IList<CustomerAddress> customerAddress = _unitOfWork.CustomerAddresses.GetAll(x => x.CustomerId == customer.Id && !x.IsDeleted).ToList();
 
             CustomerDto outModel = _mapper.Map<CustomerDto>(customer);
@@ -75,13 +75,19 @@ namespace Photocopy.Service.Services
             return customerlist;
         }
 
-        public void DeleteCustomer(int customerId)
+        public async void DeleteCustomer(int customerId)
         {
-            _unitOfWork.Customers.Remove(new Customer { Id = customerId });
+            Customer customer = _unitOfWork.Customers.GetByIdAsync(x => !x.IsDeleted && x.Id == customerId);
+            customer.IsDeleted = true;
+            await _unitOfWork.Customers.Update(customer);
+            _unitOfWork.CommitAsync();
         }
-        public void DeleteCustomerAddress(int addressId)
+        public async void DeleteCustomerAddress(int addressId)
         {
-            _unitOfWork.CustomerAddresses.Remove(new CustomerAddress { Id = addressId });
+            CustomerAddress adres = _unitOfWork.CustomerAddresses.GetByIdAsync(x => !x.IsDeleted && x.Id == addressId);
+            adres.IsDeleted = true;
+            await _unitOfWork.CustomerAddresses.Update(adres);
+            _unitOfWork.CommitAsync();
         }
 
     }

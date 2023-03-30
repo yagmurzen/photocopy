@@ -56,7 +56,7 @@ namespace Photocopy.DataAccess.Repository
 		{
             return  Context.Set<TEntity>().Where(predicate).SingleOrDefault();
         }
-
+      
         public void Remove(TEntity entity)
         {
             Context.Set<TEntity>().Remove(entity);

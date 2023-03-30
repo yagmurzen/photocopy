@@ -1,0 +1,7 @@
+﻿@model WebUI.Model.TextboxDto
+<div class="form-group">
+    <label class="col-lg-3 control-label">@Model.Label</label>
+    <div class="col-lg-8">
+        <input type="text"  id="@(string.IsNullOrEmpty(Model.Id) ? Model.Name : Model.Id)" name="@Model.Name" data-group="group" @(Model.MaxLength == 0 ? "" : "maxlength=" + Model.MaxLength ) placeholder="@Model.PlaceHolder" @(Model.IsRequired ? "" : "data-required='true'")  @(Model.Readonly ? " readonly" : "")   value="@Model.Value" class="form-control  @Model.CssClass">
+    </div>
+</div>

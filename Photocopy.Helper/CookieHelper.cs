@@ -27,7 +27,7 @@ namespace Photocopy.Helper
         {
              _httpContextAccessor.HttpContext.Request.Cookies.TryGetValue(key, out string value); ;
             
-            return !String.IsNullOrEmpty(value) ? _cryptoHelper.Decrypt(value):"";       
+            return !String.IsNullOrEmpty(value) ? _cryptoHelper.DecryptString(value):"";       
         }
 
         public void SetCookie(string key,dynamic value)
@@ -35,7 +35,7 @@ namespace Photocopy.Helper
             CookieOptions options = new CookieOptions();
             options.Expires = DateTime.Now.AddDays(1);
             options.IsEssential = true;
-            string cryptoStr= _cryptoHelper.Encrypt(Convert.ToString(value));
+            string cryptoStr= _cryptoHelper.EncryptString(Convert.ToString(value));
             _httpContextAccessor.HttpContext.Response.Cookies.Append(key, cryptoStr,options);
 
         }

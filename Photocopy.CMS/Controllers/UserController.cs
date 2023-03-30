@@ -94,7 +94,7 @@ namespace Photocopy.CMS.Controllers
             //Db.SaveChanges();
 
             //#endregion
-            _userService.DeleteUserRole(userId, roleId);
+            _userService.DeleteUserRoleAsync(userId, roleId);
 
             return RedirectToAction("Index", new { userId = userId });
 

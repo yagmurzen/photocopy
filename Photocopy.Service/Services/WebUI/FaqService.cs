@@ -38,6 +38,7 @@ namespace Photocopy.Service.Services.WebUI
 
             if (faq.Id != null) _unitOfWork.Faqs.Update(inModel);
             else _unitOfWork.Faqs.AddAsync(inModel);
+            _unitOfWork.CommitAsync();
 
             return _mapper.Map<FaqDto>(inModel);
 
@@ -50,9 +51,13 @@ namespace Photocopy.Service.Services.WebUI
             return faqlist;
         }
 
-        public void DeleteFaq(int faqId)
+        public async void DeleteFaq(int faqId)
         {
-            _unitOfWork.Faqs.Remove(new Faq { Id = faqId });
+
+            Faq faq = _unitOfWork.Faqs.GetByIdAsync(x => !x.IsDeleted && x.Id == faqId);
+            faq.IsDeleted = true;
+            await _unitOfWork.Faqs.Update(faq);
+            _unitOfWork.CommitAsync();
         }
     }
 }

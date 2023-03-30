@@ -45,8 +45,8 @@ namespace Photocopy.CMS.Controllers
 		[HttpPost]
 		public IActionResult BlogNode(int? Id, string Name)
         {
-            BlogNodeDto node = _service.SaveOrUpdateBlogNode(new BlogNodeDto { Id = Id, Name = Name, ContentPageType = ContentPageType.Blog });
-            return RedirectToAction("BlogNode", new { blogId = node.Id });
+            //BlogNodeDto node = _service.SaveOrUpdateBlogNodeAsync(new BlogNodeDto { Id = Id, Name = Name, ContentPageType = ContentPageType.Blog });
+            return RedirectToAction("BlogNode", new { blogId = Id });
         }
 
 		[HttpPost]
@@ -54,7 +54,7 @@ namespace Photocopy.CMS.Controllers
         {
             _service.DeleteBlogNode(blogId);
 
-            return BlogNodeList();
+            return RedirectToAction("Index", new { userId = blogId });
 
         }
 		#endregion

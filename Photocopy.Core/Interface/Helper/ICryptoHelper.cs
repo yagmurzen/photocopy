@@ -11,5 +11,8 @@ namespace Photocopy.Core.Interface.Helper
         string Encrypt(string input);
         string Decrypt(string input);
 
+        string EncryptString(string Message);
+        string DecryptString(string Message);
+
     }
 }

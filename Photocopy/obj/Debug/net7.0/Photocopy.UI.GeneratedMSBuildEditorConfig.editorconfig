@@ -80,6 +80,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcT3JkZXJEZXRhaWxcRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/Shared/Components/OrderState/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcT3JkZXJTdGF0ZVxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/Shared/Components/Slider/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcU2xpZGVyXERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -90,6 +94,122 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/Auth/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xBdXRoXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/Blog/BlogNode.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xCbG9nXEJsb2dOb2RlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/Blog/BlogNodeList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xCbG9nXEJsb2dOb2RlTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/Blog/BlogPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xCbG9nXEJsb2dQYWdlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/ContentNode/ContentGallery.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xDb250ZW50Tm9kZVxDb250ZW50R2FsbGVyeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/ContentNode/ContentNode.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xDb250ZW50Tm9kZVxDb250ZW50Tm9kZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/ContentNode/ContentNodeList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xDb250ZW50Tm9kZVxDb250ZW50Tm9kZUxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/ContentNode/ContentPage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xDb250ZW50Tm9kZVxDb250ZW50UGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/Customer/CustomerAddress.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xDdXN0b21lclxDdXN0b21lckFkZHJlc3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/Customer/CustomerList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xDdXN0b21lclxDdXN0b21lckxpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/Customer/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xDdXN0b21lclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/Faq/Faq.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xGYXFcRmFxLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/Faq/FaqList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xGYXFcRmFxTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xIb21lXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/Menu/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xNZW51XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/Menu/MenuList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xNZW51XE1lbnVMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/OrderManagement/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xPcmRlck1hbmFnZW1lbnRcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/OrderManagement/LookupPrice.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xPcmRlck1hbmFnZW1lbnRcTG9va3VwUHJpY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/OrderManagement/OrderManagementList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xPcmRlck1hbmFnZW1lbnRcT3JkZXJNYW5hZ2VtZW50TGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/Shared/Components/OrderState/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xTaGFyZWRcQ29tcG9uZW50c1xPcmRlclN0YXRlXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xTaGFyZWRcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xTaGFyZWRcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/SiteSettings/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xTaXRlU2V0dGluZ3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/Slider/Slider.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xTbGlkZXJcU2xpZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/Slider/SliderList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xTbGlkZXJcU2xpZGVyTGlzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xVc2VyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/User/UserList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xVc2VyXFVzZXJMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xfVmlld1N0YXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_ViewImports.cshtml]
@@ -103,3 +223,15 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-nahxot6spl
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/Shared/_LayoutCms.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRDbXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-itt5ogo22a
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/Shared/_Layout - Copy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xTaGFyZWRcX0xheW91dCAtIENvcHkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-lbr6j6bai4
+
+[C:/Users/LENOVO/source/repos/Photocopy.UI/Photocopy/Views/_CMS/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX0NNU1xTaGFyZWRcX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-0k7x8gd6k8
