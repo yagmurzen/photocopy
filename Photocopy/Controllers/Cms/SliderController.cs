@@ -40,20 +40,41 @@ namespace Photocopy.CMS.Controllers
         }
         [HttpPost]
         [Route("cms/slider")]
-        public async Task<IActionResult> SliderAsync(SliderDto slider)
+        public async Task<IActionResult> SliderAsync(SliderDto slider, IFormFile ImagePath, IFormFile MobileImagePath)
         {
-
-            await _service.SaveOrUpdateAsync(slider);
+            slider.ImagePath = Base64ToImage(ImagePath);
+            slider.MobileImagePath = Base64ToImage(MobileImagePath);
+            slider =await _service.SaveOrUpdateAsync(slider);
 
             return RedirectToAction("slider","cms", new { sliderId = slider.Id });
 
         }
         [Route("cms/DeleteSlider")]
-        public IActionResult DeleteSlider(int sliderId)
+        public async Task<IActionResult> DeleteSliderAsync(int sliderId)
         {
-            _service.DeleteSlider(sliderId);
+            await _service.DeleteSlider(sliderId);
             return RedirectToAction("slider-listesi", "cms" );
 
         }
+
+        private string Base64ToImage(IFormFile file)
+        {
+            string str = "";
+
+            if (file != null)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    file.CopyTo(ms);
+                    var fileBytes = ms.ToArray();
+                    str = Convert.ToBase64String(fileBytes);
+                    // act on the Base64 data
+                }
+            }
+
+
+            return str;
+        }
+
     }
 }

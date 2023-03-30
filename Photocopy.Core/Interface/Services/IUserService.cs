@@ -15,8 +15,8 @@ namespace Photocopy.Core.Interface.Services
 
         Task<UserDto> SaveOrUpdateAsync(UserDto user);
         IList<UserDto> GetAllUser();
-        void DeleteUser(int userId);
-        void DeleteUserRoleAsync(int userId,int userRoleId);
+        Task DeleteUser(int userId);
+        Task DeleteUserRoleAsync(int userId,int userRoleId);
 
         UserRoleDto AddRole(UserRoleDto userRole);
 

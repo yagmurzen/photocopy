@@ -14,7 +14,7 @@ namespace Photocopy.Core.Interface.Services
 
         Task<SliderDto> SaveOrUpdateAsync(SliderDto slider);
         IList<SliderDto> GetSliderList();
-        void DeleteSlider(int sliderId);
+        Task DeleteSlider(int sliderId);
 
     }
 }

@@ -17,6 +17,8 @@
     <link href="~/cms/assets/css/material-dashboard.css?v=2.1.6" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="~/cms/assets/demo/demo.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="~/cms/css/site.css" rel="stylesheet" />
     <style>
         .card table form {
             float: right;
@@ -25,13 +27,10 @@
 </head>
 
 <body class="dark-edition">
-    <div class="wrapper ">
-        <div class="sidebar" data-color="azure" data-background-color="black" data-image="~/cms/assets/img/sidebar-2.jpg">
-            <!--
-                Tip 1: You can change the color of the sidebar using: data-color="azure | azure | green | orange | danger"
 
-                Tip 2: you can also add an image using data-image tag
-            -->
+    <div class="wrapper ">
+        <div class="sidebar" data-color="azure" data-background-color="black">
+            
             <div class="logo">
                 <a href="/" class="simple-text logo-normal">
                     CMS
@@ -39,13 +38,7 @@
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">                   
-                 @*   <li class="nav-item has-submenu">
-                        <a class="nav-link" href="/ContentNode/ContentNodeList">
-                            <i class="material-icons">message</i>
-                            <p>İçerik Listesi</p>
-                        </a>
-                    </li>*@
-                    
+                 
                     <li class="nav-item ">
                         <a class="nav-link" href="/cms/kullanicilar">
                             <i class="material-icons">person</i>
@@ -70,24 +63,12 @@
                             <p>Sıkça Sorulan Sorular</p>
                         </a>
                     </li>
-                   @* <li class="nav-item ">
-                        <a class="nav-link" href="/Menu/MenuList">
-                            <i class="material-icons">menu</i>
-                            <p>Menü</p>
-                        </a>
-                    </li>*@
                     <li class="nav-item ">
                         <a class="nav-link" href="/cms/musteri-listesi">
                             <i class="material-icons">bubble_chart</i>
                             <p>Müşteriler</p>
                         </a>
                     </li>
-                  @*  <li class="nav-item ">
-                        <a class="nav-link" href="/CustomerReview/CustomerReviewList">
-                            <i class="material-icons">bubble_chart</i>
-                            <p>Müşteri Değerlendirmeleri</p>
-                        </a>
-                    </li>*@
                     
                     <li class="nav-item ">
                         <a class="nav-link" href="/cms/siparis-yonetimi">
@@ -103,18 +84,6 @@
                         </a>
                     </li>
 
-                 @*   <li class="nav-item ">
-                        <a class="nav-link" href="/SiteSettings">
-                            <i class="material-icons">settings</i>
-                            <p>Site Ayarları</p>
-                        </a>
-                    </li>*@
-                    <!-- <li class="nav-item active-pro ">
-                          <a class="nav-link" href="./upgrade.html">
-                              <i class="material-icons">unarchive</i>
-                              <p>Upgrade to PRO</p>
-                          </a>
-                      </li> -->
                 </ul>
             </div>
         </div>
@@ -137,12 +106,12 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="material-icons">person</i>
-                                    <p class="d-lg-none d-md-block">
+                                   @* <p class="d-lg-none d-md-block">
                                         Yağmur Kırılmaz
-                                    </p>
+                                    </p>*@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="/User">Yağmur Kırılmaz</a>
+                                    @*<a class="dropdown-item" href="cms/kullanici-bilgileri">Yağmur Kırılmaz</a>*@
                                     <a class="dropdown-item" href="/Cms/cikis">Çıkış</a>
                                 </div>
 
@@ -154,38 +123,17 @@
             <!-- End Navbar -->
             <div class="content">
                 <div class="container-fluid">
+
+                    <div id="toasts"></div>
+
                     @RenderBody()
                 </div>
             </div>
             <footer class="footer">
-                <div class="container-fluid">
-                    @* <nav class="float-left">
-                    <ul>
-                    <li>
-                    <a href="https://www.creative-tim.com">
-                    Creative Tim
-                    </a>
-                    </li>
-                    <li>
-                    <a href="https://creative-tim.com/presentation">
-                    About Us
-                    </a>
-                    </li>
-                    <li>
-                    <a href="http://blog.creative-tim.com">
-                    Blog
-                    </a>
-                    </li>
-                    <li>
-                    <a href="https://www.creative-tim.com/license">
-                    Licenses
-                    </a>
-                    </li>
-                    </ul>
-                    </nav>*@
+                <div class="container-fluid">                  
                     <div class="copyright float-right" id="date">
                         , made with <i class="material-icons">favorite</i> by
-                        <a href="https://www.creative-tim.com" target="_blank">yagmurzen</a>
+                        <a href="" target="_blank">fikirgen</a>
                     </div>
                 </div>
             </footer>
@@ -201,114 +149,28 @@
     <script src="~/cms/assets/js/core/jquery.min.js"></script>
     <script src="~/cms/assets/js/core/popper.min.js"></script>
     <script src="~/cms/assets/js/core/bootstrap-material-design.min.js"></script>
-    <script src="https://unpkg.com/default-passive-events"></script>
     <script src="~/cms/assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
     <!--  Google Maps Plugin    -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
     <!-- Chartist JS -->
-    <script src="~/cms/assets/js/plugins/chartist.min.js"></script>
     <!--  Notifications Plugin    -->
     <script src="~/cms/assets/js/plugins/bootstrap-notify.js"></script>
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="~/cms/assets/js/material-dashboard.js?v=2.1.0"></script>
     <!-- Material Dashboard DEMO methods, don't include it in your project! -->
     <script src="~/cms/assets/demo/demo.js"></script>
-    <script>
-        $(document).ready(function () {
-            $().ready(function () {
-                $sidebar = $('.sidebar');
-
-                $sidebar_img_container = $sidebar.find('.sidebar-background');
-
-                $full_page = $('.full-page');
-
-                $sidebar_responsive = $('body > .navbar-collapse');
-
-                window_width = $(window).width();
-
-
-
-                $('.switch-sidebar-image input').change(function () {
-                    $full_page_background = $('.full-page-background');
-
-                    $input = $(this);
-
-                    if ($input.is(':checked')) {
-                        if ($sidebar_img_container.length != 0) {
-                            $sidebar_img_container.fadeIn('fast');
-                            $sidebar.attr('data-image', '#');
-                        }
-
-                        if ($full_page_background.length != 0) {
-                            $full_page_background.fadeIn('fast');
-                            $full_page.attr('data-image', '#');
-                        }
-
-                        background_image = true;
-                    } else {
-                        if ($sidebar_img_container.length != 0) {
-                            $sidebar.removeAttr('data-image');
-                            $sidebar_img_container.fadeOut('fast');
-                        }
-
-                        if ($full_page_background.length != 0) {
-                            $full_page.removeAttr('data-image', '#');
-                            $full_page_background.fadeOut('fast');
-                        }
-
-                        background_image = false;
-                    }
-                });
-
-                $('.switch-sidebar-mini input').change(function () {
-                    $body = $('body');
-
-                    $input = $(this);
-
-                    if (md.misc.sidebar_mini_active == true) {
-                        $('body').removeClass('sidebar-mini');
-                        md.misc.sidebar_mini_active = false;
-
-                        $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
-
-                    } else {
-
-                        $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
-
-                        setTimeout(function () {
-                            $('body').addClass('sidebar-mini');
-
-                            md.misc.sidebar_mini_active = true;
-                        }, 300);
-                    }
-
-                    // we simulate the window Resize so the charts will get updated in realtime.
-                    var simulateWindowResize = setInterval(function () {
-                        window.dispatchEvent(new Event('resize'));
-                    }, 180);
-
-                    // we stop the simulation of Window Resize after the animations are completed
-                    setTimeout(function () {
-                        clearInterval(simulateWindowResize);
-                    }, 1000);
-
-                });
-            });
-        });
-
-    </script>
+    <script src="~/cms/js/site.js"></script>
+  
     <script src="https://cdn.tiny.cloud/1/bkfkh7lzdo8wk1yspfjdl6rqc318l96n5dkqg4p0cng5xco0/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-        tinymce.init({
+   
+    @RenderSection("scripts", false)
+    <script defer>
+
+         tinymce.init({
             selector: "#mytextarea"
         });
-    </script>
-    <script>
-        $(document).ready(function () {
-            // Javascript method's body can be found in assets/js/demos.js
-            md.initDashboardPageCharts();
+        $(document).ready(function (e) {
 
 
             $(".input-slug").change(function () {
@@ -332,17 +194,6 @@
                     .replace(/[^\w ]+/g, '')
                     .replace(/ +/g, '-'));
             });
-
-              //$('.nav .nav-item').click(function () {
-
-              //  $(this).addClass("active")
-              //});
-        });
-    </script>
-
-    @RenderSection("scripts", false)
-    <script defer>
-        $(document).ready(function (e) {
 
             $('.sec-btn').click(function (e) {
                 e.preventDefault();

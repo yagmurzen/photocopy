@@ -32,13 +32,13 @@ namespace Photocopy.Service.Services.WebUI
             return outModel;
         }
 
-        public FaqDto SaveOrUpdate(FaqDto faq)
+        public async Task<FaqDto> SaveOrUpdateAsync(FaqDto faq)
         {
             Faq inModel = _mapper.Map<Faq>(faq);
 
-            if (faq.Id != null) _unitOfWork.Faqs.Update(inModel);
-            else _unitOfWork.Faqs.AddAsync(inModel);
-            _unitOfWork.CommitAsync();
+            if (faq.Id != null) inModel = await _unitOfWork.Faqs.Update(inModel);
+            else inModel =  await _unitOfWork.Faqs.AddAsync(inModel);
+            await _unitOfWork.CommitAsync();
 
             return _mapper.Map<FaqDto>(inModel);
 
@@ -51,13 +51,13 @@ namespace Photocopy.Service.Services.WebUI
             return faqlist;
         }
 
-        public async void DeleteFaq(int faqId)
+        public async Task DeleteFaq(int faqId)
         {
 
             Faq faq = _unitOfWork.Faqs.GetByIdAsync(x => !x.IsDeleted && x.Id == faqId);
             faq.IsDeleted = true;
             await _unitOfWork.Faqs.Update(faq);
-            _unitOfWork.CommitAsync();
+            await _unitOfWork.CommitAsync();
         }
     }
 }

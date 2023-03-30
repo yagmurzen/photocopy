@@ -49,16 +49,16 @@ namespace Photocopy.CMS.Controllers
 
         }
         [Route("cms/DeleteCustomer")]
-        public IActionResult DeleteCustomer(int customerId)
+        public async Task<IActionResult> DeleteCustomerAsync(int customerId)
         {
-            _service.DeleteCustomer(customerId);
+            await _service.DeleteCustomer(customerId);
             return RedirectToAction("musteri-listesi", "cms");
 
         }
         [Route("cms/DeleteCustomerAddress")]
-        public IActionResult DeleteCustomerAddress(int addressId,int customerId)
+        public async Task<IActionResult> DeleteCustomerAddressAsync(int addressId,int customerId)
         {
-            _service.DeleteCustomerAddress(addressId);
+            await _service.DeleteCustomerAddress(addressId);
             return RedirectToAction("musteri-detay","cms", new { customerId = customerId });
 
         }

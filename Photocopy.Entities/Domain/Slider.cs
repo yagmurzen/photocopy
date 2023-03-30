@@ -9,15 +9,13 @@ namespace Photocopy.Entities.Domain
 {
     public class Slider : EntityBase
     {
-        public virtual string Name { get; set; }
-        public virtual string ButtonText { get; set; }
-        public virtual string ImagePath { get; set; }
-        public virtual string MobileImagePath { get; set; }
-        public virtual string Redirect { get; set; }
-        public virtual bool IsExternal { get; set; }
-        public virtual bool IsActive { get; set; }
-        public virtual int Position { get; set; }
-        public virtual string Description { get; set; }
-        public virtual string Subtitle { get; set; }
+        public  string Name { get; set; }
+        public  string ButtonText { get; set; }
+        public  string ImagePath { get; set; }
+        public  string MobileImagePath { get; set; }
+        public  bool IsActive { get; set; }
+        public  int Position { get; set; }
+        public  string Description { get; set; }
+        public  string Subtitle { get; set; }
     }
 }

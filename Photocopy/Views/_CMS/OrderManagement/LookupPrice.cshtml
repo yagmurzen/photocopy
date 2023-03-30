@@ -79,7 +79,18 @@
                 url: "/cms/SetLookupPrice",
                 data: { id: id, defaultValue: value },
                 success: function (data) {
-                  //success message
+                    $.toast({
+                        type:"success",
+                        autoDismiss: true,
+                        message: 'Fiyat Güncelleme Başarılı.'
+                    });
+                }
+                , error: function (data) {
+                    $.toast({
+                        type:"error",
+                        autoDismiss: true,
+                        message: 'Fiyat Güncelleme Başarısız.'
+                    });
                 }
             });
         });

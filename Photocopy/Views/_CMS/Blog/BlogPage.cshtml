@@ -70,9 +70,9 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                
+
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="IsActive"  value="Model.IsActive" @(Model.IsActive ? "checked" :"") id="flexCheckDefault" />
+                                    <input class="form-check-input" type="checkbox" name="IsActive" value="Model.IsActive" @(Model.IsActive ? "checked" :"") id="flexCheckDefault" />
                                     <label class="form-check-label" for="flexCheckDefault"> Sayfa Aktif mi ?</label>
                                 </div>
 
@@ -166,20 +166,49 @@
 @section scripts {
     <script>
 
+        $(document).ready(function (e) {
 
-        $('.file-upload').change(function () {
-            const file = this.files[0];
-            const id = $(this).attr("id");
 
-            console.log(file);
-            if (file) {
-                let reader = new FileReader();
-                reader.onload = function (event) {
-                    console.log(event.target.result);
-                    $("#img-" + id).attr('src', event.target.result);
+            $('.file-upload').change(function () {
+                const file = this.files[0];
+                const id = $(this).attr("id");
+
+                console.log(file);
+                if (file) {
+                    let reader = new FileReader();
+                    reader.onload = function (event) {
+                        console.log(event.target.result);
+                        $("#img-" + id).attr('src', event.target.result);
+                    }
+                    reader.readAsDataURL(file);
                 }
-                reader.readAsDataURL(file);
+            });
+
+            function dataURLtoFile(dataurl, filename) {
+
+                var arr = dataurl.split(','),
+                    mime = arr[0].match(/:(.*?);/)[1],
+                    bstr = atob(arr[1]),
+                    n = bstr.length,
+                    u8arr = new Uint8Array(n);
+
+                while (n--) {
+                    u8arr[n] = bstr.charCodeAt(n);
+                }
+
+                return new File([u8arr], filename, { type: mime });
             }
+
+            function base64ToInputFile(filename) {
+                var imageData = $("#img-" + filename).attr("src");
+                var file = dataURLtoFile(imageData, "test.png");
+                let container = new DataTransfer();
+                container.items.add(file);
+                document.querySelector('#' + filename).files = container.files;
+                var newfile = document.querySelector('#' + filename).files[0];
+            }
+            base64ToInputFile("formFile"); base64ToInputFile("formFile2");
+
         });
     </script>
 }

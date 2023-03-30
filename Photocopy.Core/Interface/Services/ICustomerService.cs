@@ -16,7 +16,7 @@ namespace Photocopy.Core.Interface.Services
         Task<CustomerAddressDto> SaveOrUpdateAddress(CustomerAddressDto customer);
 
         IList<CustomerListDto> GetCustomerList();
-        void DeleteCustomer(int customerId);
-        void DeleteCustomerAddress(int addressId);
+        Task DeleteCustomer(int customerId);
+        Task DeleteCustomerAddress(int addressId);
     }
 }

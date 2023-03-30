@@ -37,7 +37,7 @@ namespace Photocopy.CMS.Controllers
         public IActionResult SaveOrUpdateFaq(FaqDto faq)
         {
 
-            _service.SaveOrUpdate(faq);
+            _service.SaveOrUpdateAsync(faq);
 
             return View("/Views/Faq/Faq.cshtml", faq);
 

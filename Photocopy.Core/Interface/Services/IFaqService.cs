@@ -12,9 +12,9 @@ namespace Photocopy.Core.Interface.Services
     {
         FaqDto GetFaqById(int faqId);
 
-        FaqDto SaveOrUpdate(FaqDto faq);
+        Task<FaqDto> SaveOrUpdateAsync(FaqDto faq);
         IList<FaqDto> GetFaqList();
-        void DeleteFaq(int faqId);
+        Task DeleteFaq(int faqId);
 
 
     }

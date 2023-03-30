@@ -53,12 +53,16 @@ namespace Photocopy.Service.Services
             return sliderlist;
         }
 
-        public async void DeleteSlider(int sliderId)
+        public async Task DeleteSlider(int sliderId)
         {
-            Slider slider = _unitOfWork.Sliders.GetByIdAsync(x => !x.IsDeleted && x.Id == sliderId);
-            slider.IsDeleted = true;
-            await _unitOfWork.Sliders.Update(slider);
-            _unitOfWork.CommitAsync();
+            Slider slider =  _unitOfWork.Sliders.GetByIdAsync(x => !x.IsDeleted && x.Id == sliderId);
+            if (slider!=null)
+            {
+                slider.IsDeleted = true;
+                await _unitOfWork.Sliders.Update(slider);
+                await _unitOfWork.CommitAsync();
+            }
+         
         }
     }
 }

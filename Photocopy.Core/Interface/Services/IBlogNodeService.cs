@@ -14,8 +14,8 @@ namespace Photocopy.Core.Interface.Services
         IEnumerable<BlogNodeDto> GetBlogNodeAll();
         BlogPageDto GetBlogPageDetail(int BlogPageId);
 
-        void DeleteBlogNode(int BlogNodeId);
-        void DeleteBlogPage(int BlogPageId);
+        Task DeleteBlogNode(int BlogNodeId);
+        Task DeleteBlogPage(int BlogPageId);
 
         Task<BlogNodeDto> SaveOrUpdateBlogNodeAsync(BlogNodeDto BlogNode);
         Task<BlogPageDto> SaveOrUpdateBlogPageAsync(BlogPageDto BlogPage);

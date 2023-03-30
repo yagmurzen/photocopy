@@ -75,14 +75,14 @@ namespace Photocopy.Service.Services
             return customerlist;
         }
 
-        public async void DeleteCustomer(int customerId)
+        public async Task DeleteCustomer(int customerId)
         {
             Customer customer = _unitOfWork.Customers.GetByIdAsync(x => !x.IsDeleted && x.Id == customerId);
             customer.IsDeleted = true;
             await _unitOfWork.Customers.Update(customer);
             _unitOfWork.CommitAsync();
         }
-        public async void DeleteCustomerAddress(int addressId)
+        public async Task DeleteCustomerAddress(int addressId)
         {
             CustomerAddress adres = _unitOfWork.CustomerAddresses.GetByIdAsync(x => !x.IsDeleted && x.Id == addressId);
             adres.IsDeleted = true;

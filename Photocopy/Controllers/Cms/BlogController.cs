@@ -57,9 +57,9 @@ namespace Photocopy.CMS.Controllers
 
 		[HttpPost]
         [Route("DeleteBlogNode")]
-        public IActionResult DeleteBlogNode(int blogId)
+        public async Task<IActionResult> DeleteBlogNodeAsync(int blogId)
         {
-            _service.DeleteBlogNode(blogId);
+            await _service.DeleteBlogNode(blogId);
             return RedirectToAction("blog-listesi", "cms");
         }
 		#endregion
@@ -90,9 +90,9 @@ namespace Photocopy.CMS.Controllers
         }
 		[HttpPost]
         [Route("DeleteBlogPage")]
-        public IActionResult DeleteBlogPage(int blogPageId, int blogId)
+        public async Task<IActionResult> DeleteBlogPageAsync(int blogPageId, int blogId)
         {
-            _service.DeleteBlogPage(blogPageId);
+            await _service.DeleteBlogPage(blogPageId);
             return RedirectToAction("blog-detay","cms", new { blogId = blogId });
 
         }

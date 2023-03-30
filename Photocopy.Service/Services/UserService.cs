@@ -75,7 +75,7 @@ namespace Photocopy.Service.Services
 			return _mapper.Map<UserDto>(userDbModel);
         }
 
-        public async void DeleteUser(int userId)
+        public async Task DeleteUser(int userId)
         {
             User user = _unitOfWork.Users.GetByIdAsync(x => !x.IsDeleted && x.Id == userId);
             user.IsDeleted = true;
@@ -84,7 +84,7 @@ namespace Photocopy.Service.Services
 
         }
 
-        public async void DeleteUserRoleAsync(int userId,int userRoleId)
+        public async Task DeleteUserRoleAsync(int userId,int userRoleId)
         {
             var userRole =  _unitOfWork.Users.FindUserRolesAsync(ur => ur.UserId == userId && !ur.IsDeleted && ur.RoleId == userRoleId).ToList().Take(1);
             foreach (var item in userRole)

@@ -5,6 +5,7 @@ using Photocopy.Core.Interface.Services;
 using Photocopy.Entities;
 using Photocopy.Entities.Domain;
 using Photocopy.Entities.Dto;
+using System.Xml.Linq;
 
 namespace Photocopy.CMS.Controllers
 {
@@ -36,18 +37,18 @@ namespace Photocopy.CMS.Controllers
 
         }
         [Route("cms/SaveOrUpdateFaq")]        
-        public IActionResult SaveOrUpdateFaq(FaqDto faq)
+        public async Task<IActionResult> SaveOrUpdateFaqAsync(FaqDto faq)
         {
 
-            FaqDto model=_service.SaveOrUpdate(faq);
+            FaqDto model=await _service.SaveOrUpdateAsync(faq);
 
-            return RedirectToAction("sikca-sorulan-sorular-detay", "cms", model.Id);
+            return RedirectToAction("sikca-sorulan-sorular-detay", "cms", new { faqId = model.Id } );
 
         }
         [Route("cms/DeleteFaq")]
-        public IActionResult DeleteFaq(int faqId)
+        public async Task<IActionResult> DeleteFaqAsync(int faqId)
         {
-            _service.DeleteFaq(faqId);
+           await _service.DeleteFaq(faqId);
             return RedirectToAction("sikca-sorulan-sorular","cms");
 
         }

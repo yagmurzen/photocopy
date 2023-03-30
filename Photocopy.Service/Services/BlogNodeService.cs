@@ -71,7 +71,7 @@ namespace Photocopy.Service.Services
             return _mapper.Map<BlogNodeDto>(nodeModel);
         }
 
-        public async void DeleteBlogNode(int BlogNodeId)
+        public async Task DeleteBlogNode(int BlogNodeId)
         {
             BlogNode node = _unitOfWork.Blogs.GetByIdAsync(x => x.ContentPageType == ContentPageType.Blog && x.Id == BlogNodeId && !x.IsDeleted);
             node.IsDeleted = true;
@@ -105,7 +105,7 @@ namespace Photocopy.Service.Services
         }
 
 
-        public async void DeleteBlogPage(int BlogPageId)
+        public async Task DeleteBlogPage(int BlogPageId)
         {
             IList<BlogPage> page = _unitOfWork.Blogs.GetBlogPageByIdAsync(x => x.Id == BlogPageId && !x.IsDeleted).ToList();
 

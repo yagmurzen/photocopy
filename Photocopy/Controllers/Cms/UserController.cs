@@ -83,16 +83,16 @@ namespace Photocopy.CMS.Controllers
         [HttpPost]
         [Route("cms/DeleteUser")]
 
-        public IActionResult DeleteUser(int userId)
+        public async Task<IActionResult> DeleteUserAsync(int userId)
         {
-            _userService.DeleteUser(userId);
+            await _userService.DeleteUser(userId);
 
             return RedirectToAction("kullanicilar","cms");
 
         }
         [HttpPost]
         [Route("cms/DeleteUserRole")]
-        public IActionResult DeleteUserRole(int roleId,int userId)
+        public async Task<IActionResult> DeleteUserRoleAsync(int roleId,int userId)
         {
             //#region Delete İşlemleri
 
@@ -101,7 +101,7 @@ namespace Photocopy.CMS.Controllers
             //Db.SaveChanges();
 
             //#endregion
-            _userService.DeleteUserRoleAsync(userId, roleId);
+            await _userService.DeleteUserRoleAsync(userId, roleId);
 
             return RedirectToAction("Index", new { userId = userId });
 
