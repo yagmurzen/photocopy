@@ -83,7 +83,7 @@ namespace Photocopy.Controllers
                 PrivateKey = _configuration.Ipara.PrivateKey.ToString(),// "4NFUOHFTXFAHRANIE0W0YK601", //"Private Magaza Anahtarı  - size mağaza başvurunuz sonucunda gönderilen privaye key (gizli anahtar) bilgisini kullanınız.",
                 BaseUrl = _configuration.Ipara.BaseUrl,// "https://api.ipara.com/", //iPara web servisleri API url'lerinin başlangıç bilgisidir. Restful web servis isteklerini takip eden kodlar halinde bulacaksınız. Örneğin "https://api.ipara.com/" + "/rest/payment/auth"  = "https://api.ipara.com/rest/payment/auth"
                 Version = "1.0", // Kullandığınız iPara API versiyonudur.
-                Mode = "T",// "T", // Test -> T, entegrasyon testlerinin sırasında "T" modunu, canlı sisteme entegre olarak ödeme almaya başlamak için ise Prod -> "P" modunu kullanınız.
+                Mode = _configuration.Ipara.Mode,// "T", // Test -> T, entegrasyon testlerinin sırasında "T" modunu, canlı sisteme entegre olarak ödeme almaya başlamak için ise Prod -> "P" modunu kullanınız.
                 HashString = string.Empty // Kullanacağınız hash bilgisini, bağlanmak istediğiniz web servis bilgisine göre doldurulmalıdır. Bu bilgileri Entegrasyon rehberinin ilgili web servise ait bölümde bulabilirsiniz.
             };
 
@@ -106,8 +106,8 @@ namespace Photocopy.Controllers
             request.UserId = "";
             request.CardId = "";
             request.Language = "tr-TR";
-            request.SuccessUrl = "https://localhost:44358/Content/ThreeDResultSuccess?id="+id;
-            request.FailUrl = "https://localhost:44358/Content/ThreeDResultFail";
+            request.SuccessUrl = _configuration.Ipara.WebsiteUrl+"/ThreeDResultSuccess?id=" +id;
+            request.FailUrl = _configuration.Ipara.WebsiteUrl + "/Content/ThreeDResultFail";
 
 
 
@@ -156,7 +156,7 @@ namespace Photocopy.Controllers
 
                 Version = "1.0", // Kullandığınız iPara API versiyonudur.
 
-                Mode = "T",// "T", // Test -> T, entegrasyon testlerinin sırasında "T" modunu, canlı sisteme entegre olarak ödeme almaya başlamak için ise Prod -> "P" modunu kullanınız.
+                Mode = _configuration.Ipara.Mode,// "T", // Test -> T, entegrasyon testlerinin sırasında "T" modunu, canlı sisteme entegre olarak ödeme almaya başlamak için ise Prod -> "P" modunu kullanınız.
 
                 HashString = string.Empty // Kullanacağınız hash bilgisini, bağlanmak istediğiniz web servis bilgisine göre doldurulmalıdır. Bu bilgileri Entegrasyon rehberinin ilgili web servise ait bölümde bulabilirsiniz.
             };

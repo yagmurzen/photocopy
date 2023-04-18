@@ -57,6 +57,7 @@ namespace Photocopy.Entities.Model
         public string Version { get; set; }
         public string Mode { get; set; }
         public string HashString { get; set; }
+        public string WebsiteUrl { get; set; }
     }
 }
 
