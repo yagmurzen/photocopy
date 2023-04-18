@@ -19,18 +19,18 @@ namespace Photocopy.Helper
             MailMessage msg = new MailMessage(); //Mesaj gövdesini tanımlıyoruz...
             msg.Subject = "İletişim Formu - Fotokopi";
             msg.From = new MailAddress(contact.Email, contact.Fullname);
-            msg.To.Add(new MailAddress("yagmurzen@hotmail.com", "Fotokopi İletişim"));
+            msg.To.Add(new MailAddress("info@fotokopi.com", "Fotokopi İletişim"));
 
             //Mesaj içeriğinde HTML karakterler yer alıyor ise aşağıdaki alan TRUE olarak gönderilmeli ki HTML olarak yorumlansın. Yoksa düz yazı olarak gönderilir...
             msg.IsBodyHtml = true;
             msg.Body = contact.Message;
 
             //Mesaj önceliği (BELİRTMEK ZORUNLU DEĞİL!)
-            msg.Priority = MailPriority.High;
+            //msg.Priority = MailPriority.High;
 
             //SMTP/Gönderici bilgilerinin yer aldığı erişim/doğrulama bilgileri
             SmtpClient smtp = new SmtpClient("smtp.siteadi.com", 587); //Bu alanda gönderim yapacak hizmetin smtp adresini ve size verilen portu girmelisiniz.
-            NetworkCredential AccountInfo = new NetworkCredential("gondericiadresi@siteadi.com", "e-posta şifresi");
+            NetworkCredential AccountInfo = new NetworkCredential("info@fotokopi.com", "");
             smtp.UseDefaultCredentials = false; //Standart doğrulama kullanılsın mı? -> Yalnızca gönderici özellikle istiyor ise TRUE işaretlenir.
             smtp.Credentials = AccountInfo;
             smtp.EnableSsl = false; //SSL kullanılarak mı gönderilsin...
