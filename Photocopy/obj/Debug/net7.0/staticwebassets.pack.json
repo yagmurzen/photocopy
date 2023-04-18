@@ -309,6 +309,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\LENOVO\\source\\repos\\Photocopy.UI\\Photocopy\\wwwroot\\images\\MNG_Kargo.png",
+      "PackagePath": "staticwebassets\\images\\MNG_Kargo.png"
+    },
+    {
       "Id": "C:\\Users\\LENOVO\\source\\repos\\Photocopy.UI\\Photocopy\\wwwroot\\images\\aras.svg",
       "PackagePath": "staticwebassets\\images\\aras.svg"
     },

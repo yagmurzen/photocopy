@@ -244,7 +244,7 @@ namespace Photocopy.Service.Services
         public async Task SetOrderDetail(OrderListDto orderInfoDto)
         {
             Order  order=_unitOfWork.Orders.Find(x=>x.Id== orderInfoDto.Id).FirstOrDefault() ?? new Order();
-            order.OrderStateId = orderInfoDto.OrderStateId;
+            order.OrderStateId = orderInfoDto.OrderStateId==0? order.OrderStateId : orderInfoDto.OrderStateId; 
             order.PaymentState = (PaymentState)orderInfoDto.PaymentState;
             order.TransactionDate =  DateTime.Now;
             order.OrderInvoiceId = orderInfoDto.OrderInvoiceId;

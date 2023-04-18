@@ -8,7 +8,7 @@ namespace Photocopy.Entities.Dto
 {
     public class UploadDataDto
     {
-        public string FileData { get; set; }
+        public string FilePath { get; set; }
         public string FileName { get; set; }
     }
 }

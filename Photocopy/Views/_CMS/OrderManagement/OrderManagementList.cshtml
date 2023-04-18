@@ -59,7 +59,7 @@
                                             <td>@item.TransactionDate</td>
                                             <td>@item.OrderState.Text</td>
                                             <td>@(item.PaymentType==0 ? "Kredi Kartı" : "Havale/EFT")</td>
-                                            <td>@(item.PaymentState == 0 ? "Tamamlanmadı" : "Tamamlandı")</td>
+                                            <td>@(item.PaymentState == 0 ? "Tamamlanmadı" : item.PaymentState == 1 ? "Tamamlanacak" : "Tamamlandı")</td>
                                             <td>@(item.CargoCompanyId == 0 ? "Mng Kargo" : "Aras Kargo")</td>
                                             <td>@item.TotalPrice</td>
                                             <td>@item.Notes</td>

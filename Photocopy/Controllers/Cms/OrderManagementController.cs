@@ -39,7 +39,7 @@ namespace Photocopy.CMS.Controllers
         public async Task<IActionResult> UploadData(Guid uploadDataId)
         {
             UploadDataDto data = _service.GetUploadData(uploadDataId);
-            var bytes = Convert.FromBase64String(data.FileData);
+            var bytes = Convert.FromBase64String(data.FilePath);
             return File(bytes, "application/pdf", data.FileName);
         }
         [Route("cms/fiyat-listesi")]

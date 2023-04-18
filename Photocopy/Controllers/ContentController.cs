@@ -137,7 +137,7 @@ namespace Photocopy.Controllers
                 OrderListDto order = new OrderListDto();
 
                 order.Id = id;
-                order.PaymentState = 1;
+                order.PaymentState =(int) PaymentState.Done;
                 order.TransactionDate = DateTime.Now;
 
                 _service.SetOrderDetail(order);

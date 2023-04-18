@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3xZTCKH4nZ6MgDHv/XI2EB+jG7ovNVULuyihToAu08Y=",
+  "Hash": "l8xUnYtdNt7VwUhCQ9b4D1dAHOi5bFXAgNGEXq2x1l0=",
   "Source": "Photocopy.UI",
   "BasePath": "_content/Photocopy.UI",
   "Mode": "Default",
@@ -1511,6 +1511,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\menu-bars.svg"
+    },
+    {
+      "Identity": "C:\\Users\\LENOVO\\source\\repos\\Photocopy.UI\\Photocopy\\wwwroot\\images\\MNG_Kargo.png",
+      "SourceId": "Photocopy.UI",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\LENOVO\\source\\repos\\Photocopy.UI\\Photocopy\\wwwroot\\",
+      "BasePath": "_content/Photocopy.UI",
+      "RelativePath": "images/MNG_Kargo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\MNG_Kargo.png"
     },
     {
       "Identity": "C:\\Users\\LENOVO\\source\\repos\\Photocopy.UI\\Photocopy\\wwwroot\\images\\mobile-hero-image.png",
