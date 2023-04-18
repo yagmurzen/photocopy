@@ -35,7 +35,7 @@ namespace Photocopy.Entities.Dto.WebUI
 		public string PhoneNumber { get; set; }
 		public string Adrress { get; set; }
         public string City { get; set; }
-
+        public string CityId { get; set; }
     }
     public class OrderDetailDto
     {

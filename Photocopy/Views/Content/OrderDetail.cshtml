@@ -10,7 +10,7 @@
     <style>
         #fatura-detay .main .sepeteEkleSonuc .header p {
             color: #f84a00;
-        }        
+        }
     </style>
 }
 
@@ -18,7 +18,7 @@
     <div class="container">
         <!-- BREADCRUMB -->
         <p class="breadcrumb"><a href="/">Anasayfa</a> > Sipariş Detay</p>
-        @if (Model!=null)
+        @if (Model != null)
         {
             <section id="fatura-detay" class="detay">
                 <div class="header">
@@ -88,13 +88,14 @@
                     </div>
                     <hr />
                     <div class="ucret-toplam">
-                        <p class="kk">@(Model.PaymentType == "2" ? "Havale(EFT)":"Kredi Kartı") Ödemesi</p>
+                        <p class="kk">@(Model.PaymentType == "2" ? "Havale(EFT)" : "Kredi Kartı") Ödemesi</p>
                         <p class="genel-toplam">Genel Toplam Fiyat : <span>@Model.TotalPrice TL</span></p>
                     </div>
-                    <hr/>
                     @if (Model.PaymentState == PaymentState.NotPayment)
                     {
-                        <div id="paymentIframe" class="modal inputs-modal" style="display:block;width:100%;height:100%;background-color: #8d8c8c6e;" onclick="modalClose('paymentIframe')">
+                            <input type="submit" value="Öde" class="btn" onclick="modalOpen('paymentIframe')">
+
+                        <div id="paymentIframe" class="modal inputs-modal" style="width:100%;height:100%;background-color: #8d8c8c6e;" onclick="modalClose('paymentIframe')">
                             <!-- Modal content -->
                             <div class="modal-content" style="width:50%;height:70%">
                                 <span class="close">&times;</span>
@@ -102,115 +103,20 @@
                                 </iframe>
                             </div>
                         </div>
-                        @*                 <form action="/payment" method="post" class="form-horizontal">
-                            <fieldset>
-                                <!-- Form Name -->
-                                <legend><label style="font-weight:bold;width:250px;">Kart Bilgileriyle Ödeme</label></legend>
-                                <!-- Text input-->
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="">Kart Sahibi Adı Soyadı (*):</label>
-                                    <div class="col-md-4">
-                                        <input value="Fatih Coşkun" name="nameSurname" class="form-control input-md" required>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="">Kart Numarası (*):</label>
-                                    <div class="col-md-4">
-                                        <input value="4508034508034509" name="cardNumber" class="form-control input-md" required>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="">Son Kullanma Tarihi Ay/Yıl (*):</label>
-                                    <div class="col-md-1">
-                                        <input name="month"
-                                       type="text"
-                                       value="12"
-                                       class="form-control input-md"
-                                       required />
-                                    </div>
-                                    <div class="col-md-1">
-                                        <input name="year"
-                                       type="text"
-                                       value="24"
-                                       class="form-control input-md"
-                                       required />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="">CVC (*):</label>
-                                    <div class="col-md-4">
-                                        <input value="000" name="cvc" class="form-control input-md" required>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="">Tutar (**):</label>
-                                    <div class="col-md-4">
-                                        <input value="10000" name="amount" class="form-control input-md" required>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="">Taksit (Opsiyonel):</label>
-                                    <div class="col-md-4">
-                                        <select class="form-control input-md" name="installment">
-                                            <option value="">Seçiniz</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">6</option>
-                                            <option value="7">7</option>
-                                            <option value="8">8</option>
-                                            <option value="9">9</option>
-                                            <option value="10">10</option>
-                                            <option value="11">11</option>
-                                            <option value="12">12</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </fieldset>
-                            <!-- Button -->
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for=""></label>
-                                <div class="col-md-4">
-                                    <button type="submit" id="" name="" class="btn btn-success">3D Ödeme</button>
-                                </div>
-                            </div>
-                            <p>** Sipariş tutarı kuruş ayracı olmadan gönderilmelidir. Örneğin; 1 TL 100, 12 1200, 130 13000, 1.05 105, 1.2 120 olarak gönderilmelidir.</p>
-                        </form>
-
-                        <section id="iletisim-form">
-                            <div class="wrapper">
-
-                                @using (Html.BeginRouteForm("sendmail", FormMethod.Post, new { autocomplete = "off", id = "iletisim-form" }))
-                        {
-                                <form autocomplete="off" id="frm-contact">
-                                    <input type="text" placeholder="Ad Soyad" name="Fullname" />
-                                    <div>
-                                        <input type="mail" id="iletisim-mail-input" placeholder="E-mail" name="Email" />
-                                        <span class="error" id="mail-error">Lütfen geçerli bir e-mail adresi girin.</span>
-                                    </div>
-
-                                    <input type="text" placeholder="Telefon" name="PhoneNumber" />
-                                    <textarea rows="3" placeholder="Mesajınız" name="Message"></textarea>
-                                    <button type="button">GÖNDER</button>
-                                </form>
-
-                                }
-                            </div>
-                        </section>*@
                     }
-                </div>
+                    <hr />
+
             </section>
-            
+
         }
         else
-        { <section id="fatura-detay" class="detay">
+        {
+            <section id="fatura-detay" class="detay">
                 <div class="header">
                     <p class="siparis-no">Sipariş Bulunamadı</p>
                 </div>
             </section>
         }
-      
+
     </div>
 </main>

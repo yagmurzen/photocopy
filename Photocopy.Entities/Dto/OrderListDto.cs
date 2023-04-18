@@ -25,6 +25,7 @@ namespace Photocopy.Entities.Dto
         public string OrderInvoiceId { get; set; }
         public string OrderInvoiceDetailId { get; set; }
         public string ShipperBranchCode { get; set; }
+        public string? IparaOrderId { get; set; }
     }
 
     public class OrderDetailDto

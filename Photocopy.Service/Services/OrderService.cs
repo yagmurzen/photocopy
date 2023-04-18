@@ -226,6 +226,7 @@ namespace Photocopy.Service.Services
                 CargoCompanyName = order.CargoCompany.Name.ToString(),
                 CargoCompanyPrice = order.CargoCompany.Price.ToString(),
                 PaymentType = order.PaymentType.ToString(),
+                PaymentState = order.PaymentState,
                 TotalPrice = order.TotalPrice,
                 Customer = new CustomerInfoDto
                 {   Name = customer.Name, 
@@ -233,7 +234,8 @@ namespace Photocopy.Service.Services
                     PhoneNumber = customer.PhoneNumber, 
                     Email= customer.Email,
                     Adrress = customerAddress.Address, 
-                    City = customerAddress.City.CityName.ToString() 
+                    City = customerAddress.City.CityName.ToString() ,
+                    CityId=customerAddress.CityId.ToString()
                 },
                 OrderDetail= details,
                 Notes= order.Notes,
@@ -250,6 +252,8 @@ namespace Photocopy.Service.Services
             order.OrderInvoiceId = orderInfoDto.OrderInvoiceId;
             order.OrderInvoiceDetailId = orderInfoDto.OrderInvoiceDetailId;
             order.ShipperBranchCode = orderInfoDto.ShipperBranchCode;
+            order.IparaOrderId = orderInfoDto.IparaOrderId;
+
 
             await _unitOfWork.Orders.Update(order);
             await _unitOfWork.CommitAsync();
